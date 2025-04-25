@@ -1,0 +1,77 @@
+/* styles.css */
+/* Base */
+div {
+  margin: 30px;
+}
+
+body {
+  max-width: 600px;
+  margin: 6% 15%; /* center the body */
+  font-family: "Times New Roman", serif;
+  font-size: 20px;
+  line-height: 1.5; /* paragraph spacing */
+  padding: 5% 13%;
+  border: 1px rgb(194, 173, 173) solid;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  color: #000;
+}
+
+/* Centered container with border and padding */
+
+/* Header styles */
+.site-header h1,
+.site-header h2 {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.site-header h2 {
+  font-size: 0.8em; /* smaller than the h1 */
+  color: #006eb6;
+  font-size: 1.2em; /* smaller than the h1 */
+  font-weight: normal; /* normal weight for subtitle */
+  color: #333; /* dark gray for subtitle */
+  padding-bottom: 2%;
+}
+
+.site-header h2 {
+  color: #006eb6; /* the blue subtitle color */
+  margin-top: 0.5em;
+  border-bottom: 1px solid #006eb6;
+  font-size: 0.8em;
+}
+
+/* Main text */
+main p {
+  text-align: left; /* paragraphs stay left-aligned */
+  margin: 1em 0;
+}
+main:first-child {
+  padding: 5%;
+}
+
+/* The numbered list */
+.mission-list {
+  margin: 1em 0 2em 1.2em; /* indent a bit from the left */
+  padding: 4px 0 4px 20px; /* space out the list items */
+}
+
+/* Logo at the bottom */
+footer {
+  text-align: center;
+}
+
+.logo {
+  width: 150px; /* scale down the big image */
+  height: auto;
+  display: inline-block;
+  margin-top: 1em;
+}
+
+/* WebKit browsers (Chrome, Safari, Opera) */
+body::-webkit-scrollbar {
+    display: none;
+  }
