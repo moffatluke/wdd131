@@ -12,9 +12,11 @@ function changeTheme() {
         logo.setAttribute('src', 'byui-logo_white.png');
 
         //give body dark class
-        //add differenct image by changing src
+        //add different image by changing src
+        
     } else {
-        document.body.className('light');
+        //remove class
+        document.body.className = 'light';
         logo.src = 'byui-logo_blue.webp';
         //take off class
         //change the image back to original
