@@ -16,7 +16,6 @@ body {
   color: #000;
 }
 
-/* Centered container with border and padding */
 
 /* Header styles */
 .site-header h1,
@@ -75,3 +74,15 @@ footer {
 body::-webkit-scrollbar {
     display: none;
   }
+
+
+  /* Dark Mode */
+  .dark {
+    background-color: #333; /* dark background */
+    color: white; /* white text */
+
+  }
+  .dark h2 {
+    color: rgb(160, 212,237); /* blue subtitle color */
+  }
+  
