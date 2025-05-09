@@ -1,11 +1,117 @@
-/* css mini rest */
-* {
-    box-sizing: border-box;
+@import url("https://fonts.googleapis.com/css2?family=Mooli&display=swap");
+
+:root {
+  --primary-color: #52489c;
+  --secondary-color: #59c3c3;
+  --accent-color: #f45b69;
+  --text-dark: #333;
+  --text-light: #ebebeb;
+  --primary-font: Arial, Helvetica, sans-serif;
+  --secondary-font: "Mooli", sans-serif;
+}
+
+h2,
+header,
+footer {
+  text-align: center;
+}
+
+ul {
+  padding-left: 0;
+}
+
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  padding: 1rem;
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  font-family: var(--primary-font);
+  display: grid;
+  align-items: center;
+}
+
+#menu-btn {
+  background: var(--primary-color);
+  border: none;
+  color: var(--text-light);
+  font-size: 1.2em;
+}
+
+nav {
+  display: none;
+}
+
+nav a {
+  color: var(--text-light);
+  text-decoration: none;
+  margin-left: 1rem;
+}
+
+.gallery {
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  grid-template-columns: 100%;
+}
+
+figure img {
+  width: 250px;
+  height: 250px;
+  margin: 4em auto;
+  padding: 0.7rem;
+  box-shadow: 1px 10px 10px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  max-width: 100%;
+}
+
+footer {
+  padding: 1rem;
+  background-color: var(--secondary-color);
+  color: var(--text-light);
+  margin-top: 2em;
+}
+
+/* Hide scrollbar for all elements */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 700px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
   }
-  body {
-    margin: 0;
-    font-family: var(--primary-font);
-    font-size: 1.2em;
-    color: var(--text-dark);
-    line-height: 1.5;
+}
+
+@media (min-width: 1000px) {
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+    margin: 0 8em;
   }
+
+  nav {
+    display: flex;
+    row-gap: 0.5rem;
+  }
+
+  nav ul {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 7rem;
+    margin: 0 auto;
+    padding-bottom: 0.5rem;
+  }
+
+  header {
+    justify-items: center;
+    row-gap: 1rem;
+  }
+
+  #menu-btn {
+    display: none;
+  }
+}
