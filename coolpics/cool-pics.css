@@ -73,9 +73,9 @@ figure {
 }
 figure img {
   display: block;
-  width: 100%;
+  width: 250px;
   height: 250px;
-  object-fit: cover;
+  
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -118,11 +118,25 @@ footer {
   }
 
   nav{
-    display: block; /* show on desktop */
+    display: flex; /* show on desktop */
+    row-gap: 0.5rem;
     
   }
-  ul {display:inline
 
+  nav ul {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    margin:0 auto;
+    padding-bottom:0.5rem;
+    gap: 7rem;
+
+  }
+
+  header {
+    display: grid;
+    justify-items: center;       /* center children horizontally */
+    row-gap: 1rem;               /* vertical space between rows */
+    /* implicitly it's two rows: the <h1> and then the <nav> */
   }
 
   #menu-btn {
