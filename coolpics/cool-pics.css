@@ -93,35 +93,45 @@ footer {
 
 /* 2.7 Second breakpoint: ≥1000px (three columns, horizontal nav) */
 @media (min-width: 1000px) {
-  .gallery {
-    grid-template-columns: repeat(3, 1fr);
-    margin-left: 8em;
-    margin-right: 8em; 
-  }
-
-  nav{
-    display: flex; /* show on desktop */
-    row-gap: 0.5rem;
-  }
-
-  nav ul {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    margin:0 auto;
-    padding-bottom:0.5rem;
-    gap: 7rem;
-  }
-
-  header {
-    display: grid;
-    justify-items: center;       /* center children horizontally */
-    row-gap: 1rem;               /* vertical space between rows */
-    /* implicitly it's two rows: the <h1> and then the <nav> */
-  }
-
+  /* 1) hide hamburger */
   #menu-btn {
     display: none;
   }
-  
+
+  /* 2) stack the title and nav in a centered column */
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;            /* space between H1 and nav */
+  }
+
+  /* 3) force the nav visible and full-width */
+  #main-nav {
+    display: block;       /* override display:none */
+    width: 100%;          /* span the header’s full width */
+    margin: 0;            /* kill any default margins */
+    padding: 0;
+  }
+
+  /* 4) lay out the UL as a centered flex-row */
+  #main-nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;            /* space between items */
+    margin: 0;
+    padding: 0;
+    list-style: none;     /* no bullets */
+  }
+  #main-nav li {
+    margin: 0;            /* reset any li spacing */
+  }
+
+  /* 5) your gallery can stay as-is */
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+    margin: 0 8em;
+  }
 }
+
 
