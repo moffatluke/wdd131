@@ -6,3 +6,7 @@ menuBtn.addEventListener("click", () => {
   nav.style.display = nav.style.display === "block" ? "none" : "block";
 });
 
+
+figure.addEventListener("click"), () => {
+
+}
