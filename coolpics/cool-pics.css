@@ -47,6 +47,10 @@ ul {
   padding-left: 0;
 }
 
+.hide {
+  display: none;
+}
+
 li {
   list-style-type: none;  /* turns off bullets on the <li> */
   margin: 1rem 0; /* vertical space between items */
@@ -75,6 +79,29 @@ figure img{
     max-width: 100%;
  
 }
+
+
+.viewer {
+  position: fixed;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: grid;
+  grid-template-rows: auto 1fr;
+  place-items: center;
+  z-index: 10;
+}
+.viewer img {
+  max-height: 100%;
+  max-width: 90%;
+}
+.close-viewer {
+  justify-self: end;
+  margin: 1rem;
+  /* style it so it’s visible on dark bg */
+}
+
+
+
 /* 2.5 Footer */
 footer {
   text-align: center;
@@ -132,6 +159,11 @@ footer {
     grid-template-columns: repeat(3, 1fr);
     margin: 0 8em;
   }
+  .viewer {
+    padding: 2rem;
+    grid-template-rows: auto 1fr;
+  }
+  
 }
 
 
