@@ -110,12 +110,17 @@ footer {
   color: var(--text-light);
   margin-top: 2em;
 }
+
+
 /* 2.6 First breakpoint: ≥700px (two columns) */
 @media (min-width: 700px) {
   .gallery {
     grid-template-columns: repeat(2, 1fr);
   }
-
+.modal-img {
+    max-width: 100vw;
+    max-height: 70vh;
+  }
 }
 
 /* 2.7 Second breakpoint: ≥1000px (three columns, horizontal nav) */
@@ -163,7 +168,10 @@ footer {
     padding: 2rem;
     grid-template-rows: auto 1fr;
   }
-  
+  #modal-img {
+    max-width: 100vw;
+    max-height: 70vh;
+  }
 }
 
 
