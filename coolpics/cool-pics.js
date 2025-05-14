@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function viewerTemplate(src, alt) {
     return `
       <div class="viewer">
-        <button class="close-viewer" aria-label="Close viewer">×</button>
+        <button class="close-viewer" aria-label="Close viewer">x</button>
         <img src="${src}" alt="${alt}">
       </div>
     `;
