@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return `
       <div class="viewer">
         <button class="close-viewer" aria-label="Close viewer">x</button>
-        <img src="${src}" alt="${alt}">
+        <img id="modal-img" src="${src}" alt="${alt}">
       </div>
     `;
   }
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const thumbSrc = e.target.getAttribute('src');
 
     // insert "-full" just before the extension
-    const fullSrc = thumbSrc.replace(/(\.\w+)$/, '-full$1');
+    const fullSrc = thumbSrc.replace(/-sm(?=\.\w+$)/, '-full');
 
     // pop in the modal HTML
     document.body.insertAdjacentHTML(
