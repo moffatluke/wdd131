@@ -10,6 +10,7 @@
   --primary-font: Arial, Helvetica, sans-serif;
   --secondary-font: "Mooli", sans-serif;
 }
+
 h2 {
     text-align: center;
 }
@@ -32,9 +33,6 @@ header {
   color: var(--text-light);
   font-size: 1.2em;
 
-}
-nav {
-  display: none; /* hidden on mobile */
 }
 nav a {
   display : grid;
@@ -77,30 +75,51 @@ figure img{
     /* soften the corners */
     border-radius: 5px; 
     max-width: 100%;
- 
+}
+
+.norris :hover {
+  transform: scale(1.06);
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
 }
 
 
+/* Modal styles */
 .viewer {
   position: fixed;
-  top: 0; right: 0; bottom: 0; left: 0;
-  background: rgba(0, 0, 0, 0.75);
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.75);
   display: grid;
-  grid-template-rows: auto 1fr;
   place-items: center;
+  padding: 2rem;
   z-index: 10;
 }
-.viewer img {
-  max-height: 100%;
-  max-width: 90%;
-}
 .close-viewer {
-  justify-self: end;
-  margin: 1rem;
-  /* style it so it’s visible on dark bg */
+  position: absolute;
+  top: 1rem; right: 1rem;
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  border: none;
+  font-size: 2em;
+  padding: 0.5em;
+  border-radius: 15px;
 }
 
+.close-viewer:hover {
+  background-color: var(--accent-color);
+  color: var(--text-dark);
+  border-radius: 15px;
+  cursor: pointer;
+} 
 
+.hide {
+  display: none;
+}
+
+.viewer img {
+  max-width: 90%;
+  max-height: 90%;
+}
 
 /* 2.5 Footer */
 footer {

@@ -2,12 +2,13 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Menu toggle & responsive behavior
-  const menuButton = document.getElementById('menu-btn');
+  const menuButton = document.querySelector('#menu-btn');
   const menu       = document.querySelector('#main-nav .menu');
 
   function toggleMenu() {
     menu.classList.toggle('hide');
   }
+
 
   function handleResize() {
     if (window.innerWidth > 1000) {

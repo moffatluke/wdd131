@@ -6,15 +6,15 @@
   <meta name="author" content="Luke Moffat">
   <meta name="description" content="A collection of cool nature pictures" />
   <link rel="stylesheet" href="cool-pics.css"/>
-  <script src="cool-pics.js"defer></script>
+  <script src="cool-pics-practice.js"defer></script>
   <title>Cool Pics</title>
 </head>
 <body>
   <header>
     <h1>Cool Pics</h1>
     <button id="menu-btn" class="menu-button">☰</button>
-    <nav id="main-nav">
-      <ul class="menu hide">
+    <nav id="main-nav" class="hide">
+      <ul class="menu">
           <li>Home</li>
           <li>People</li>
           <li>Places</li>
@@ -26,28 +26,28 @@
   <main>
     <h2>Current Work</h2>
     <section class="gallery">
-      <figure>
+      <figure class='norris'>
         <img src="norris-sm.jpeg" alt="Picture" />
       </figure>
-      <figure>
+      <figure class='norris'>
         <img src="norris-sm.jpeg" alt="Picture" />
       </figure>
-      <figure>
+      <figure class='norris'>
         <img src="norris-sm.jpeg" alt="Picture" />
       </figure>
-      <figure>
+      <figure class='norris'>
         <img src="norris-sm.jpeg" alt="Picture" />
       </figure>
-      <figure>
+      <figure class='norris'>
         <img src="norris-sm.jpeg" alt="Picture" />
       </figure>
-      <figure>
+      <figure class='norris'>
         <img src="norris-sm.jpeg" alt="Picture" />
       </figure>
-      <figure>
+      <figure class='norris'>
         <img src="norris-sm.jpeg" alt="Picture" />
       </figure>
-      <figure>
+      <figure class='norris'>
         <img src="norris-sm.jpeg" alt="Picture" />
       </figure>
       <figure>
@@ -59,6 +59,11 @@
   <footer>
     ©2025 Not a real site
   </footer>
+
+  <div id="modal" class="viewer hide">
+    <img id="modal-img" alt="">
+    <button class="close-viewer">X</button>
+  </div>
 
 </body>
 </html>
