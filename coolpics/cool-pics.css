@@ -52,7 +52,7 @@ ul {
 li {
   list-style-type: none;  /* turns off bullets on the <li> */
   margin: 1rem 0; /* vertical space between items */
-  padding: none;
+  padding: 0;
 }
 
 /* 2.4 Gallery styles */
