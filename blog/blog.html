@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Kids Read for Fun | Book Review Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A fun and simple blog where kids and parents can explore book reviews and find great reads for all ages.">
+  <meta name="author" content="Luke Moffat">
+  <link rel="stylesheet" href="blog.css">
+  <script src="blog.js" defer></script>
+</head>
+<body>
+    <a href="#maincontent" class="skip-link">Skip to main content</a>
+    <header>
+  <h1>Kids Read for Fun</h1>
+  <button id="menu-btn" class="menu-button" aria-label="Toggle navigation menu">☰</button>
+
+  <nav id="main-nav">
+    <ul class="menu hide">
+        <li><a href="#about" aria-label="Go to About section">About</a></li>
+        <li><a href="#archive" aria-label="View Archive">Archive</a></li>
+        <li><a href="#search" aria-label="Search the site">Search</a></li>
+    </ul>
+  </nav>
+  </header> 
+  <main id="maincontent">
+
+
+
+    <div class="columnTwo">
+        <h2>Book of Mormon</h2>
+        <img src="BookofMormon.jpg" alt="picture of the Book of Mormon (blue)">
+        <p>The Book of Mormon a sacred record of Jesus Christ's dealings with the ancient inhabitants of the Americas.</p>
+    </div>
+
+
+
+    <div class="columnOne">
+        <p>July 5, 2022</p>
+        <p>10-14</p>
+        <p>Fantasy</p>
+        <p>stars</p>
+    </div>
+
+    <!-- Filter form will go here -->
+<div class="columnThree">
+  <aside>
+    <button id="toggle-filter" aria-label="Toggle book filter form">Show Filters</button>
+
+    <form id="filter-form">
+      <label for="genre">Genre:</label>
+      <select id="genre" name="genre">...</select><br><br>
+
+      <label for="age">Age Range:</label>
+      <select id="age" name="age">...</select><br><br>
+
+      <label for="rating">Rating:</label>
+      <select id="rating" name="rating">...</select><br><br>
+
+      <label for="year">Year:</label>
+      <select id="year" name="year">...</select>
+    </form>
+  </aside>
+</div>
+
+  </main>
+  <footer>
+    <!-- Footer content goes here -->
+  </footer>
+</body>
+</html>
