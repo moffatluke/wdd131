@@ -10,18 +10,13 @@ function animateCardTransition() {
   const isDesktop = window.matchMedia('(min-width: 768px)').matches;
 
   if (isDesktop) {
-    // Start with card-back in mobile position
-    cardBack.style.transform = 'translateY(0)';
-    // Force reflow for transition
-    void cardBack.offsetWidth;
-    // Animate to desktop position (slide up and left, more smooth)
-    cardBack.style.transition = 'transform 1.1s cubic-bezier(.22,1,.36,1), box-shadow 0.7s cubic-bezier(.22,1,.36,1)';
-    cardBack.style.transform = 'translate(-48px, -48px) scale(0.98)';
+    // End state: card-back is already in its final grid position, no transform
+    cardBack.style.transform = 'none';
     cardBack.style.boxShadow = '0 8px 32px rgba(99,102,241,0.18)';
   } else {
-    // Reset for mobile
+    // Mobile: reset for mobile
     cardBack.style.transition = 'transform 0.7s cubic-bezier(.22,1,.36,1), box-shadow 0.5s cubic-bezier(.22,1,.36,1)';
-    cardBack.style.transform = 'translateY(0) scale(1)';
+    cardBack.style.transform = 'none';
     cardBack.style.boxShadow = '';
   }
 }
