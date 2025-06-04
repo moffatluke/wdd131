@@ -1,0 +1,253 @@
+/* GLOBAL RESET AND LAYOUT */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* FORM CONTAINER */
+form {
+  width: 100%;
+  max-width: 600px;
+  padding: 1rem;
+}
+
+/* CARD GRID FOR FRONT/BACK */
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  gap: 20px;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 500px; /* Prevents stretching to screen edge on mobile */
+}
+
+@media (max-width: 767px) {
+  .card-grid {
+    padding-left: 16px;
+    padding-right: 16px;
+    width: 100%;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* CARDS */
+.card-front,
+.card-back {
+  width: 100%;
+  padding: 20px;
+  border-radius: 8px;
+  min-width: 0;
+  position: relative;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  font-size: 0.7m;
+  text-align: right
+}
+
+.card-front {
+  background: linear-gradient(120deg, #4f8cff 0%, #6ee7b7 100%);
+  z-index: 2;
+  color: #fff;
+}
+
+.card-back {
+  background: linear-gradient(120deg, #6366f1 0%, #f472b6 100%);
+  z-index: 1;
+  color: #fff;
+}
+
+
+.card-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  height: 30px;
+  width: auto;
+}
+
+.total {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+label {
+  font-size: 12px;
+  display: block;
+  margin-bottom: 6px;
+  text-align: right;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  background: linear-gradient(90deg, #a5b4fc 0%, #fbc2eb 100%);
+  color: #222;
+  border: none;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+input::placeholder {
+  color: white;
+  opacity: 0.6;
+  font-style: italic;
+}
+
+/* FIELDS AND GROUPS */
+.front-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.field-row {
+  display: flex;
+  gap: 15px;
+}
+
+.field {
+  flex: 1;
+}
+
+.expiration {
+  display: flex;
+  gap: 10px;
+}
+
+/* CARD BACK STYLING */
+.stripe {
+  background: linear-gradient(90deg, #334155 0%, #64748b 100%);
+  height: 55px;
+  margin-bottom: 100px;
+  border-radius: 4px;
+}
+
+.cvc-container {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 100px;
+}
+
+.cvc-container input {
+  margin-bottom: 5px;
+}
+
+.cvc-container {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 90px; /* was 100px */
+}
+
+
+/* SUBMIT BUTTON */
+.submit-section {
+  margin-top: 30px;
+  text-align: center;
+  padding-inline: 5vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60px; /* Adjust as needed for button height + scale */
+}
+
+button {
+  background: linear-gradient(90deg, #6366f1 0%, #4f8cff 100%);
+  color: #fff;
+  border: none;
+  padding: 12px 40px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  text-transform: uppercase;
+  transition: all 0.2s cubic-bezier(.4,2,.6,1);
+  display: inline-block;
+  /* Prevent layout shift on scale by reserving space */
+  will-change: transform;
+}
+
+button:hover, button:focus {
+  background: #fff;
+  color: #6366f1;
+  transform: scale(1.08);
+  border: 2px solid #6366f1;
+}
+
+/* DESKTOP OVERLAP GRID */
+@media (min-width: 768px) {
+  .card-grid {
+    grid-template-columns: 1fr 1.5fr 1.5fr 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    height: 400px;
+    font-size: 0.7rem;
+    text-align: right;
+  }
+
+  .card-front {
+    grid-column: 1 / 4;
+    grid-row: 1 / 4;
+  }
+
+  .card-back {
+    grid-column: 2 / 5;
+    grid-row: 2 / 5;
+  }
+}
+
+/* Make text on the card-back shrink responsively on small screens */
+@media (max-width: 500px) {
+  .card-back {
+    font-size: 0.7m;
+    text-align: right
+  }
+  .cvc-container label,
+  .cvc-container input,
+  .cvc-container p {
+    font-size: 0.7m;
+    text-align: right
+  }
+}
+@media (max-width: 375px) {
+  .card-back {
+    font-size: 0.7rem;
+  }
+  .cvc-container label,
+  .cvc-container input,
+  .cvc-container p {
+    font-size: 0.75em;
+  }
+}
+
+/* Center the card content using flex for both cards */
+.card-front,
+.card-back {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-back .stripe {
+  align-self: stretch;
+}
