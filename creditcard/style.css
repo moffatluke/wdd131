@@ -195,6 +195,12 @@ button:hover, button:focus {
   border: 2px solid #6366f1;
 }
 
+button:focus-visible, .focus-visible {
+  outline: 3px solid #6366f1;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px #a5b4fc55;
+}
+
 /* DESKTOP OVERLAP GRID */
 @media (min-width: 768px) {
   .card-grid {
