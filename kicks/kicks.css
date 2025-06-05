@@ -1,0 +1,534 @@
+/* Modern Airforce 1 / Jordan Product Page CSS */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', Arial, sans-serif;
+  background: linear-gradient(120deg, #f7f3ef 60%, #e7d3c2 100%);
+  color: #222;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', Arial, sans-serif;
+  background: linear-gradient(135deg, #f8fafc 0%, #fbbf24 100%);
+  min-height: 100vh;
+  color: #222;
+  overflow-x: hidden;
+}
+
+header {
+  background-color: #111;
+  padding: 20px;
+  text-align: center;
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  z-index: 10;
+  width: 100%;
+  padding: 2rem 0 1rem 0;
+  text-align: center;
+  background: linear-gradient(90deg, #f472b6 0%, #6366f1 100%);
+  color: #fff;
+  letter-spacing: 2px;
+  font-size: 2.5rem;
+  font-weight: 900;
+  box-shadow: 0 4px 24px rgba(99,102,241,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.scroll-container {
+  perspective: 1000px;
+  height: 200vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.rotating-shoe {
+  position: sticky;
+  top: 20%;
+  transform-style: preserve-3d;
+  width: 350px;
+  transition: transform 0.2s ease-out;
+}
+
+.rotating-shoe img {
+  width: 100%;
+  display: block;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: 2rem 1rem 1rem 1rem;
+  background: linear-gradient(120deg, #fbbf24 0%, #f472b6 100%);
+  border-radius: 0 0 48px 48px;
+  box-shadow: 0 8px 32px rgba(99,102,241,0.10);
+  margin-bottom: 2rem;
+  animation: fadeIn 1.2s cubic-bezier(.22,1,.36,1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: none; }
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 16px #fbbf24cc;
+}
+.hero-desc {
+  font-size: 1.3rem;
+  color: #fff;
+  margin-bottom: 2rem;
+  font-weight: 400;
+  text-shadow: 0 1px 8px #6366f1cc;
+}
+.hero-img {
+  width: 320px;
+  max-width: 90vw;
+  border-radius: 32px;
+  box-shadow: 0 8px 32px #f472b655, 0 2px 8px #6366f1aa;
+  margin-bottom: 1.5rem;
+  animation: popIn 1.2s cubic-bezier(.22,1,.36,1);
+}
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.8) rotate(-8deg); }
+  to { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+.shoe-section {
+  max-width: 1100px;
+  margin: 0 auto 3rem auto;
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2.5rem;
+}
+.shoe-card {
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 4px 24px #fbbf2440, 0 1px 4px #6366f120;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s cubic-bezier(.22,1,.36,1), box-shadow 0.3s;
+  will-change: transform;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(60px);
+}
+.shoe-card.visible {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.7s cubic-bezier(.22,1,.36,1), transform 0.7s cubic-bezier(.22,1,.36,1);
+}
+.shoe-card:hover {
+  transform: scale(1.04) rotate(-2deg);
+  box-shadow: 0 8px 32px #f472b655, 0 2px 8px #6366f1aa;
+}
+.shoe-img {
+  width: 180px;
+  height: 110px;
+  object-fit: contain;
+  margin-bottom: 1.2rem;
+  filter: drop-shadow(0 4px 16px #fbbf24cc);
+  border-radius: 16px;
+  background: linear-gradient(90deg, #fbbf24 0%, #f472b6 100%);
+}
+.shoe-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #6366f1;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+.shoe-desc {
+  font-size: 1rem;
+  color: #222;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.shoe-price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #f472b6;
+  margin-bottom: 0.5rem;
+}
+.cta {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0 3rem 0;
+}
+.cta-btn {
+  background: linear-gradient(90deg, #fbbf24 0%, #6366f1 100%);
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 32px;
+  padding: 1rem 2.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 24px #fbbf2440;
+  transition: background 0.2s, transform 0.2s;
+  letter-spacing: 1px;
+}
+.cta-btn:hover {
+  background: linear-gradient(90deg, #6366f1 0%, #fbbf24 100%);
+  color: #fff;
+  transform: scale(1.06);
+}
+footer {
+  background: #111;
+  padding: 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+  text-align: center;
+  color: #6366f1;
+  font-size: 1rem;
+  padding: 2rem 0 1rem 0;
+  background: none;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  background: #fbbf24;
+}
+::-webkit-scrollbar-thumb {
+  background: #f472b6;
+  border-radius: 8px;
+}
+.af1-container {
+  max-width: 1100px;
+  margin: 40px auto 0 auto;
+  background: #f7f3ef;
+  border-radius: 32px;
+  box-shadow: 0 8px 48px #bfae9e33, 0 1.5px 8px #e7d3c2cc;
+  padding: 2.5rem 2.5rem 1.5rem 2.5rem;
+  position: relative;
+}
+.af1-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+.af1-menu-cart {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.af1-menu-btn {
+  background: #fff;
+  border: none;
+  font-size: 1.1rem;
+  font-family: 'Bebas Neue', Arial, sans-serif;
+  padding: 0.7em 1.5em;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px #e7d3c2aa;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: background 0.2s;
+}
+.af1-menu-btn:hover {
+  background: #f7e0c2;
+}
+.af1-cart {
+  font-size: 1.1rem;
+  font-family: 'Montserrat', Arial, sans-serif;
+  color: #bfae9e;
+}
+.af1-search {
+  border: none;
+  background: #f3e7d7;
+  border-radius: 8px;
+  padding: 0.7em 1.5em;
+  font-size: 1.1rem;
+  font-family: 'Montserrat', Arial, sans-serif;
+  box-shadow: 0 2px 8px #e7d3c2aa;
+  outline: none;
+  transition: box-shadow 0.2s;
+}
+.af1-search:focus {
+  box-shadow: 0 4px 16px #bfae9e55;
+}
+.af1-main {
+  display: flex;
+  gap: 2.5rem;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.af1-left {
+  flex: 1 1 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+  align-items: flex-start;
+}
+.af1-shoplook {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px #e7d3c2aa;
+  padding: 0.5rem 1rem;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #bfae9e;
+}
+.af1-shoplook img {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+.af1-fit {
+  display: flex;
+  gap: 0.7rem;
+}
+.af1-fit-btn {
+  background: #f3e7d7;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 1rem;
+  padding: 0.5em 1.2em;
+  color: #bfae9e;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.af1-fit-btn-active, .af1-fit-btn:hover {
+  background: #bfae9e;
+  color: #fff;
+}
+.af1-size-label {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 1rem;
+  color: #bfae9e;
+  margin-bottom: 0.3rem;
+}
+.af1-sizes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.af1-sizes button {
+  background: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 1rem;
+  padding: 0.5em 1.1em;
+  color: #bfae9e;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.af1-sizes button:hover, .af1-sizes button:focus {
+  background: #bfae9e;
+  color: #fff;
+}
+.af1-center {
+  flex: 2 1 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  min-width: 320px;
+}
+.af1-bg-swoosh {
+  position: absolute;
+  left: 0; top: 0; right: 0; bottom: 0;
+  background: url('https://svgshare.com/i/15kA.svg') no-repeat center center/contain;
+  opacity: 0.08;
+  z-index: 0;
+  pointer-events: none;
+}
+.af1-shoe-hotspots {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 1.5rem;
+}
+.af1-shoe-img {
+  width: 420px;
+  max-width: 90vw;
+  display: block;
+  filter: drop-shadow(0 8px 32px #bfae9e55);
+  border-radius: 24px;
+  background: #fff;
+}
+.af1-hotspot {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background: #fff;
+  border: 3px solid #3a5a8c;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px #bfae9e55;
+  cursor: pointer;
+  transition: background 0.2s, border 0.2s;
+}
+.af1-hotspot:hover {
+  background: #3a5a8c;
+  border-color: #fff;
+}
+.af1-title {
+  font-family: 'Bebas Neue', Arial, sans-serif;
+  font-size: 2.7rem;
+  color: #3a5a8c;
+  text-align: center;
+  margin-bottom: 0.2rem;
+  letter-spacing: 2px;
+}
+.af1-premium {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 1.1rem;
+  color: #bfae9e;
+  letter-spacing: 1px;
+}
+.af1-price {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 2rem;
+  color: #bfae9e;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+}
+.af1-addcart {
+  background: linear-gradient(90deg, #3a5a8c 0%, #bfae9e 100%);
+  color: #fff;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  padding: 0.8em 2.5em;
+  cursor: pointer;
+  box-shadow: 0 4px 16px #bfae9e33;
+  transition: background 0.2s, transform 0.2s;
+}
+.af1-addcart:hover {
+  background: linear-gradient(90deg, #bfae9e 0%, #3a5a8c 100%);
+  color: #fff;
+  transform: scale(1.04);
+}
+.af1-right {
+  flex: 1 1 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+  align-items: flex-end;
+}
+.af1-colorways {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  align-items: flex-end;
+}
+.af1-colorways img {
+  width: 70px;
+  height: 45px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 2px 8px #bfae9e55;
+  background: #fff;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border 0.2s;
+}
+.af1-colorways img:hover {
+  border: 2px solid #3a5a8c;
+}
+.af1-color-label {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 1rem;
+  color: #bfae9e;
+  margin-bottom: 0.3rem;
+  text-align: right;
+}
+.af1-colors {
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+  justify-content: flex-end;
+}
+.af1-color {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 8px #bfae9e55;
+  cursor: pointer;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+.af1-color-active, .af1-color:hover {
+  border: 2px solid #3a5a8c;
+  box-shadow: 0 4px 16px #3a5a8c33;
+}
+.af1-footer {
+  text-align: center;
+  color: #bfae9e;
+  font-size: 1rem;
+  padding: 2rem 0 1rem 0;
+  background: none;
+}
+@media (max-width: 1100px) {
+  .af1-container {
+    padding: 1.2rem 0.5rem 1rem 0.5rem;
+  }
+  .af1-main {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+  .af1-left, .af1-right {
+    align-items: center;
+    text-align: center;
+  }
+  .af1-right {
+    flex-direction: row;
+    gap: 1.2rem;
+    justify-content: center;
+  }
+  .af1-colorways {
+    flex-direction: row;
+    gap: 1.2rem;
+    align-items: center;
+  }
+  .af1-color-label, .af1-colors {
+    text-align: center;
+    justify-content: center;
+  }
+}
+@media (max-width: 700px) {
+  .af1-shoe-img {
+    width: 90vw;
+    min-width: 0;
+    border-radius: 12px;
+  }
+  .af1-title {
+    font-size: 2rem;
+  }
+  .af1-price {
+    font-size: 1.3rem;
+  }
+  .af1-addcart {
+    font-size: 1rem;
+    padding: 0.7em 1.5em;
+  }
+}
