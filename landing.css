@@ -1,0 +1,189 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', Arial, sans-serif;
+  background: linear-gradient(120deg, #f0f4f8 0%, #e0e7ef 100%);
+  color: #222;
+  min-height: 100vh;
+}
+.landing-title {
+  text-align: center;
+  font-size: 2.7rem;
+  font-weight: 700;
+  margin: 2.5rem 0 1.5rem 0;
+  letter-spacing: 1px;
+}
+.landing-grid {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 0;
+  margin: 0 auto 2.5rem auto;
+  padding: 0 2vw;
+  position: relative;
+  height: 340px;
+  min-height: 320px;
+}
+.landing-card {
+  position: relative;
+  width: 260px;
+  min-width: 220px;
+  height: 320px;
+  margin-left: -80px;
+  top: -40px;
+  background: #fff;
+  border-radius: 18px;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(.22,1,.36,1), box-shadow 0.18s, z-index 0.2s;
+  border: 2px solid transparent;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  overflow: visible;
+  perspective: 1200px;
+}
+.landing-card:first-child {
+  margin-left: 0;
+}
+.landing-card .card-inner {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0; top: 0;
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(.22,1,.36,1);
+  will-change: transform;
+  z-index: 2;
+}
+.landing-card .card-front, .landing-card .card-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0; top: 0;
+  backface-visibility: hidden;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2.2rem 1.5rem 1.5rem 1.5rem;
+  box-shadow: 0 4px 24px #6366f133, 0 1.5px 8px #a5b4fc22;
+  background: #fff;
+}
+.landing-card .card-back {
+  background: linear-gradient(120deg, #6366f1 0%, #a5b4fc 100%);
+  color: #fff;
+  transform: rotateY(180deg);
+  z-index: 3;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 8px 32px #6366f155, 0 2px 8px #a5b4fc55;
+}
+.landing-card.flipped .card-inner {
+  transform: rotateY(180deg);
+  z-index: 3;
+}
+.landing-card .card-front {
+  z-index: 2;
+}
+.landing-card.flipped .card-front {
+  pointer-events: none;
+}
+.landing-card .card-back {
+  pointer-events: none;
+}
+.landing-card.flipped .card-back {
+  pointer-events: auto;
+}
+.landing-card h2 {
+  margin: 0 0 0.7rem 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #6366f1;
+  letter-spacing: 1px;
+}
+.landing-card p {
+  margin: 0;
+  color: #444;
+  font-size: 1rem;
+  font-weight: 400;
+}
+.landing-card:hover, .landing-card:focus-within {
+  z-index: 10;
+  transform: translateY(-30px) scale(1.08) rotate(-2deg);
+  box-shadow: 0 12px 48px #6366f155, 0 4px 16px #a5b4fc55;
+  background: linear-gradient(120deg, #6366f1 0%, #a5b4fc 100%);
+  border: 2px solid #6366f1;
+}
+.landing-card:hover .card-inner, .landing-card:focus-within .card-inner {
+  transform: rotateY(180deg);
+}
+.landing-card .card-back h2 {
+  color: #fff;
+  margin-bottom: 1rem;
+}
+.landing-card .card-back p {
+  color: #f0f4f8;
+  font-size: 1.1rem;
+}
+.landing-card:hover .card-front h2, .landing-card:focus-within .card-front h2 {
+  color: #fff;
+}
+.landing-card:hover .card-front, .landing-card:focus-within .card-front {
+  color: #fff;
+}
+.landing-footer {
+  text-align: center;
+  color: #6366f1;
+  font-size: 1rem;
+  padding: 2rem 0 1rem 0;
+  background: none;
+}
+.ripple {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: rgba(99,102,241,0.18);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: scale(0);
+  animation: ripple-anim 0.6s linear forwards;
+  z-index: 2;
+}
+@keyframes ripple-anim {
+  to {
+    transform: scale(3.5);
+    opacity: 0;
+  }
+}
+@media (max-width: 1100px) {
+  .landing-grid {
+    flex-wrap: wrap;
+    height: auto;
+    min-height: 0;
+    gap: 1.5rem;
+    justify-content: flex-start;
+  }
+  .landing-card {
+    margin-left: 0;
+    margin-bottom: 1.5rem;
+    top: 0;
+  }
+}
+@media (max-width: 700px) {
+  .landing-title {
+    font-size: 1.5rem;
+  }
+  .landing-card {
+    width: 90vw;
+    min-width: 0;
+    height: 180px;
+    padding: 0;
+  }
+  .landing-card .card-front, .landing-card .card-back {
+    padding: 1.2rem 0.7rem 1rem 0.7rem;
+  }
+}
