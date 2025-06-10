@@ -12,6 +12,7 @@ body {
   max-width: 400px;
   margin: 40px auto;
   overflow: hidden;
+  text-align: left;
 }
 .image{
   width: 100%;
