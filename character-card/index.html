@@ -7,29 +7,33 @@
   <meta name="description" content="A dynamic character card for WDD131 assignment, featuring interactive stats and actions.">
   <meta name="author" content="Luke Moffat">
   <link rel="icon" href="favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="site.webmanifest">
   <link href="styles.css" rel="stylesheet">
   <!-- Social Media Meta -->
   <meta property="og:title" content="Character Card">
-  <meta property="og:type" content="website" />
-  <meta property="og:description" content="A dynamic character card for WDD131 assignment, featuring interactive stats and actions.">
+  <meta property="og:type" content="website"/>
+  <meta property="og:description" content="A dynamic character card, featuring interactive stats and actions.">
   <meta property="og:image" content="https://andejuli.github.io/img/snortleblat.png">
   <meta property="og:url" content="https://github.com/lukeb/wdd131/character-card">
   <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
   <div class="card">
-    <img class="image" src="ChatGPT Image Jun 5, 2025, 12_35_36 PM.png" alt="Character Image">
-    <div class="name"></div>
+    <img class="image" src="" alt="Character portrait of Snortleblat">
+    <div class="name" id="name" tabindex="0"></div>
     <div class="stats">
-      <p><strong>Class:</strong> <span id="class"></span></p>
-      <p><strong>Level:</strong> <span id="level"></span></p>
-      <p><strong>Health:</strong> <span id="health"></span></p>
+      <p>Class: <span id="class"></span></p>
+      <p>Level: <span id="level"></span></p>
+      <p>Health: <span id="health"></span></p>
     </div>
     <div class="buttons">
-      <button id='attacked'>Attacked</button>
-      <button id='levelup'>Level Up</button>
+      <button id='attacked' aria-label="Attacked: decrease health and level">Attacked</button>
+      <button id='levelup' aria-label="Level Up: increase health and level">Level Up</button>
     </div>
-    <p id="log"></p>
+    <p id="log" aria-live="polite"></p>
   </div>
   <script src="script.js"></script>
 </body>
