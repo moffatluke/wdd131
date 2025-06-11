@@ -57,3 +57,14 @@ levelupBtn.addEventListener('click', () => {
 
 // Initial render
 renderCharacter();
+
+document.addEventListener('DOMContentLoaded', function() {
+  const hero = document.querySelector('.hero');
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 40) {
+      hero.classList.add('scrolled');
+    } else {
+      hero.classList.remove('scrolled');
+    }
+  });
+});
