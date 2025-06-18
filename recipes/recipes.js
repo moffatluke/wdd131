@@ -296,6 +296,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const img = document.createElement('img');
     img.src = recipe.image;
     img.alt = recipe.name + ' photo';
+    img.className = 'card-img';
+    img.loading = 'lazy'; // Lazy load recipe images
     card.appendChild(img);
 
     // Details
