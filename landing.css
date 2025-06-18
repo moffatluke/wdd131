@@ -2,8 +2,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', Arial, sans-serif;
-  background: linear-gradient(120deg, #f0f4f8 0%, #e0e7ef 100%);
-  color: #222;
+  background: #181a1b;
+  color: #f0f4f8;
   min-height: 100vh;
 }
 .landing-title {
@@ -12,6 +12,7 @@ body {
   font-weight: 700;
   margin: 2.5rem 0 1.5rem 0;
   letter-spacing: 1px;
+  color: #fff;
 }
 .landing-grid {
   display: flex;
@@ -32,11 +33,11 @@ body {
   height: 320px;
   margin-left: -80px;
   top: -40px;
-  background: #fff;
+  background: #23272a;
   border-radius: 18px;
   cursor: pointer;
   transition: transform 0.35s cubic-bezier(.22,1,.36,1), box-shadow 0.18s, z-index 0.2s;
-  border: 2px solid transparent;
+  border: 2px solid #333;
   z-index: 1;
   display: flex;
   flex-direction: column;
@@ -44,43 +45,61 @@ body {
   justify-content: flex-end;
   overflow: visible;
   perspective: 1200px;
+  box-shadow: 0 4px 24px #0004;
 }
-.landing-card:first-child {
-  margin-left: 0;
-}
-.landing-card .card-inner {
+.card-inner {
+  position: relative;
   width: 100%;
   height: 100%;
-  position: absolute;
-  left: 0; top: 0;
+  transition: transform 0.7s cubic-bezier(.22,1,.36,1);
   transform-style: preserve-3d;
-  transition: transform 0.5s cubic-bezier(.22,1,.36,1);
-  will-change: transform;
-  z-index: 2;
 }
-.landing-card .card-front, .landing-card .card-back {
+.landing-card:hover .card-inner, .landing-card:focus-within .card-inner {
+  transform: rotateY(180deg);
+}
+.card-front, .card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  position: absolute;
-  left: 0; top: 0;
   backface-visibility: hidden;
   border-radius: 18px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  padding: 2.2rem 1.5rem 1.5rem 1.5rem;
-  box-shadow: 0 4px 24px #6366f133, 0 1.5px 8px #a5b4fc22;
-  background: #fff;
+  align-items: stretch;
+  justify-content: stretch;
 }
-.landing-card .card-back {
-  background: linear-gradient(120deg, #6366f1 0%, #a5b4fc 100%);
+.card-front-img {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+}
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 18px;
+  display: block;
+}
+.card-back.card-back-hover {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  background: rgba(24,26,27,0.98);
+  color: #f0f4f8;
+}
+.card-back-hover h2, .card-back-hover p {
   color: #fff;
-  transform: rotateY(180deg);
-  z-index: 3;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  box-shadow: 0 8px 32px #6366f155, 0 2px 8px #a5b4fc55;
+  text-shadow: 0 2px 8px #000a;
 }
 .landing-card.flipped .card-inner {
   transform: rotateY(180deg);
@@ -118,9 +137,6 @@ body {
   background: linear-gradient(120deg, #6366f1 0%, #a5b4fc 100%);
   border: 2px solid #6366f1;
 }
-.landing-card:hover .card-inner, .landing-card:focus-within .card-inner {
-  transform: rotateY(180deg);
-}
 .landing-card .card-back h2 {
   color: #fff;
   margin-bottom: 1rem;
@@ -140,7 +156,9 @@ body {
   color: #6366f1;
   font-size: 1rem;
   padding: 2rem 0 1rem 0;
-  background: none;
+  background: #181a1b;
+  color: #f0f4f8;
+  border-top: 1px solid #333;
 }
 .ripple {
   position: absolute;
@@ -159,18 +177,104 @@ body {
     opacity: 0;
   }
 }
+/* Side-by-side card front and back layout */
+.card-front-sidebyside {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  height: 100%;
+  width: 100%;
+  background: none;
+  position: relative;
+  overflow: hidden;
+}
+.card-img-side {
+  width: 48%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 18px 0 0 18px;
+  background: #222;
+  flex-shrink: 0;
+}
+.card-front-text {
+  width: 52%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(90deg, rgba(24,26,27,0.95) 80%, rgba(24,26,27,0.12) 100%);
+  color: #fff;
+  padding: 0 1.2rem;
+  border-radius: 0 18px 18px 0;
+  text-align: left;
+}
+.card-front-text h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  color: #fff;
+  text-shadow: 0 2px 8px #000a;
+}
+.card-back-sidebyside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 100%;
+  width: 100%;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  background: linear-gradient(120deg, #23272a 0%, #181a1b 100%);
+  border-radius: 18px;
+}
+.card-back-sidebyside h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 0.7rem 0;
+  color: #fff;
+}
+.card-back-sidebyside p {
+  color: #f0f4f8;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+/* Card back for hover/flip: left-aligned text, no overlay on front */
+.card-back-hover {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 100%;
+  width: 100%;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  background: linear-gradient(120deg, #23272a 0%, #181a1b 100%);
+  border-radius: 18px;
+  text-align: left;
+}
+.card-back-hover h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 0.7rem 0;
+  color: #fff;
+  text-align: left;
+}
+.card-back-hover p {
+  color: #f0f4f8;
+  font-size: 1.1rem;
+  margin: 0;
+  text-align: left;
+}
 @media (max-width: 1100px) {
+  .landing-card {
+    margin-left: 0;
+    margin-bottom: 1.5rem;
+    top: 0;
+  }
   .landing-grid {
     flex-wrap: wrap;
     height: auto;
     min-height: 0;
     gap: 1.5rem;
     justify-content: flex-start;
-  }
-  .landing-card {
-    margin-left: 0;
-    margin-bottom: 1.5rem;
-    top: 0;
   }
 }
 @media (max-width: 700px) {
@@ -184,6 +288,39 @@ body {
     padding: 0;
   }
   .landing-card .card-front, .landing-card .card-back {
+    padding: 0;
+  }
+  .card-front-overlay {
+    padding: 0.7rem 1rem 1rem 1rem;
+    min-height: 2.5rem;
+    font-size: 1.1rem;
+  }
+  .card-front-overlay h2 {
+    font-size: 1.1rem;
+  }
+  .card-front-sidebyside {
+    flex-direction: column;
+  }
+  .card-img-side {
+    width: 100%;
+    height: 48%;
+    border-radius: 18px 18px 0 0;
+  }
+  .card-front-text {
+    width: 100%;
+    border-radius: 0 0 18px 18px;
+    padding: 0.7rem 1rem 1rem 1rem;
+  }
+  .card-front-text h2 {
+    font-size: 1.1rem;
+  }
+  .card-back-sidebyside {
     padding: 1.2rem 0.7rem 1rem 0.7rem;
+  }
+  .card-back-hover {
+    padding: 1.2rem 0.7rem 1rem 0.7rem;
+  }
+  .card-back-hover h2 {
+    font-size: 1.1rem;
   }
 }
