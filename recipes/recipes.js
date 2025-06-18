@@ -280,75 +280,192 @@ const recipes = [
 	}
 ]
 
-document.addEventListener('DOMContentLoaded', () => {
+// Utility: get a random integer >= 0 and < max
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+// Utility: get a random recipe from the recipes array
+function getRandomRecipe() {
+  return recipes[getRandomInt(recipes.length)];
+}
+
+// Utility: get a random recipe from the recipes array
+function getRandomListEntry(list) {
+  if (!Array.isArray(list) || list.length === 0) return null;
+  return list[Math.floor(Math.random() * list.length)];
+}
+
+// Filter recipes by query string
+function filterRecipes(query) {
+  query = query.toLowerCase();
+  window.currentQuery = query; // Ensure filterFunction uses the correct query
+  return recipes.filter(filterFunction).sort((a, b) => a.name.localeCompare(b.name));
+}
+
+function filterFunction(recipe) {
+  const query = (window.currentQuery || '').trim().toLowerCase();
+  if (!query) return true;
+  const queryWords = query.split(/\s+/);
+
+  // Combine searchable fields into one string
+  const searchable = [
+    recipe.name,
+    recipe.description,
+    ...(recipe.tags || []),
+    ...(recipe.recipeIngredient || [])
+  ].join(' ').toLowerCase();
+
+  // Check if every word in the query is found somewhere in the searchable string
+  return queryWords.every(word => searchable.includes(word));
+}
+
+// Render a list of recipes to the page
+function renderRecipeList(list) {
   const cardList = document.querySelector('.card-list');
   if (!cardList) return;
-
-  // Render all recipes
-  recipes.forEach(recipe => {
-    // Card container
-    const card = document.createElement('article');
-    card.className = 'recipe-card';
-    card.setAttribute('tabindex', '0');
-    card.setAttribute('aria-labelledby', `title-${recipe.name.replace(/\s+/g, '-')}`);
-
-    // Image
-    const img = document.createElement('img');
-    img.src = recipe.image;
-    img.alt = recipe.name + ' photo';
-    img.className = 'card-img';
-    img.loading = 'lazy'; // Lazy load recipe images
-    card.appendChild(img);
-
-    // Details
-    const details = document.createElement('div');
-    details.className = 'recipe-details';
-
-    // Tags
-    const tagRow = document.createElement('div');
-    tagRow.className = 'tag-row';
-    recipe.tags.forEach(tag => {
-      const tagSpan = document.createElement('span');
-      tagSpan.className = 'recipe-tag';
-      tagSpan.textContent = tag;
-      tagRow.appendChild(tagSpan);
-    });
-    details.appendChild(tagRow);
-
-    // Title
-    const title = document.createElement('h2');
-    title.className = 'recipe-title';
-    title.id = `title-${recipe.name.replace(/\s+/g, '-')}`;
-    title.textContent = recipe.name;
-    details.appendChild(title);
-
-    // Stars
-    const stars = document.createElement('span');
-    stars.className = 'rating';
-    stars.setAttribute('role', 'img');
-    stars.setAttribute('aria-label', `Rating: ${recipe.rating} out of 5 stars`);
-    for (let i = 0; i < 5; i++) {
-      const star = document.createElement('span');
-      if (i < Math.floor(recipe.rating)) {
-        star.className = 'icon-star';
-        star.setAttribute('aria-hidden', 'true');
-        star.textContent = '⭐';
-      } else {
-        star.className = 'icon-star-empty';
-        star.setAttribute('aria-hidden', 'true');
-        star.textContent = '☆';
-      }
-      stars.appendChild(star);
-    }
-    details.appendChild(stars);
-
-    // Description
-    const desc = document.createElement('div');
-    desc.className = 'recipe-desc';
-    desc.textContent = recipe.description;
-    details.appendChild(desc);
-
-    card.appendChild(details);
-    cardList.appendChild(card);
+  cardList.innerHTML = '';
+  if (list.length === 0) {
+    cardList.innerHTML = '<p>No recipes found.</p>';
+    return;
+  }
+  list.forEach(recipe => {
+    cardList.innerHTML += recipeTemplate(recipe);
   });
+}
+
+// Search handler
+function searchHandler(event) {
+  event.preventDefault();
+  const input = document.getElementById('search-input');
+  if (!input) return;
+  const query = input.value.trim().toLowerCase();
+  if (!query) {
+    // If empty, show a random recipe
+    renderRecipeList([getRandomListEntry(recipes)]);
+    return;
+  }
+  const filtered = filterRecipes(query);
+  renderRecipeList(filtered);
+}
+
+// Template: generate tag markup
+function createTagRow(tags) {
+  const tagRow = document.createElement('div');
+  tagRow.className = 'tag-row';
+  tags.forEach(tag => {
+    const tagSpan = document.createElement('span');
+    tagSpan.className = 'recipe-tag';
+    tagSpan.textContent = tag;
+    tagRow.appendChild(tagSpan);
+  });
+  return tagRow;
+}
+
+// Template: generate rating stars markup
+function createRatingStars(rating) {
+  const stars = document.createElement('span');
+  stars.className = 'rating';
+  stars.setAttribute('role', 'img');
+  stars.setAttribute('aria-label', `Rating: ${rating} out of 5 stars`);
+  for (let i = 0; i < 5; i++) {
+    const star = document.createElement('span');
+    if (i < Math.floor(rating)) {
+      star.className = 'icon-star';
+      star.setAttribute('aria-hidden', 'true');
+      star.textContent = '⭐';
+    } else {
+      star.className = 'icon-star-empty';
+      star.setAttribute('aria-hidden', 'true');
+      star.textContent = '☆';
+    }
+    stars.appendChild(star);
+  }
+  return stars;
+}
+
+// Add recipeTemplate for HTML rendering
+function tagsTemplate(tags) {
+  return tags.map(tag => `<span class="recipe-tag">${tag}</span>`).join('');
+}
+
+function ratingTemplate(rating) {
+  let html = '';
+  for (let i = 1; i <= 5; i++) {
+    if (i <= Math.round(rating)) {
+      html += '<span aria-hidden="true" class="icon-star">⭐</span>';
+    } else {
+      html += '<span aria-hidden="true" class="icon-star-empty">☆</span>';
+    }
+  }
+  return html;
+}
+
+function recipeTemplate(recipe) {
+  return `<article class="recipe-card" tabindex="0" aria-labelledby="title-${recipe.name.replace(/\s+/g, '-')}">
+    <img src="${recipe.image}" alt="image of ${recipe.name}" class="card-img" loading="lazy" />
+    <div class="recipe-details">
+      <div class="tag-row">
+        ${tagsTemplate(recipe.tags)}
+      </div>
+      <h2 class="recipe-title" id="title-${recipe.name.replace(/\s+/g, '-')}">${recipe.name}</h2>
+      <span class="rating" role="img" aria-label="Rating: ${recipe.rating} out of 5 stars">
+        ${ratingTemplate(recipe.rating)}
+      </span>
+      <div class="recipe-desc">${recipe.description}</div>
+    </div>
+  </article>`;
+}
+
+// Template: generate a recipe card
+function createRecipeCard(recipe) {
+  const card = document.createElement('article');
+  card.className = 'recipe-card';
+  card.setAttribute('tabindex', '0');
+  card.setAttribute('aria-labelledby', `title-${recipe.name.replace(/\s+/g, '-')}`);
+
+  const img = document.createElement('img');
+  img.src = recipe.image;
+  img.alt = recipe.name + ' photo';
+  img.className = 'card-img';
+  img.loading = 'lazy';
+  card.appendChild(img);
+
+  const details = document.createElement('div');
+  details.className = 'recipe-details';
+  details.appendChild(createTagRow(recipe.tags));
+
+  const title = document.createElement('h2');
+  title.className = 'recipe-title';
+  title.id = `title-${recipe.name.replace(/\s+/g, '-')}`;
+  title.textContent = recipe.name;
+  details.appendChild(title);
+
+  details.appendChild(createRatingStars(recipe.rating));
+
+  const desc = document.createElement('div');
+  desc.className = 'recipe-desc';
+  desc.textContent = recipe.description;
+  details.appendChild(desc);
+
+  card.appendChild(details);
+  return card;
+}
+
+// On page load, show a random recipe and set up search
+document.addEventListener('DOMContentLoaded', () => {
+  const cardList = document.querySelector('.card-list');
+  if (cardList) {
+    const randomRecipe = getRandomListEntry(recipes);
+    if (randomRecipe) {
+      cardList.innerHTML = '';
+      cardList.innerHTML += recipeTemplate(randomRecipe);
+    } else {
+      cardList.innerHTML = '<p>No recipes found.</p>';
+    }
+  }
+  const searchForm = document.querySelector('.search-form');
+  if (searchForm) {
+    searchForm.addEventListener('submit', searchHandler);
+  }
 });

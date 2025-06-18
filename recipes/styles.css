@@ -119,7 +119,7 @@ header {
 
 main {
   flex: 1 0 auto;
-  /* Remove width and max-width to allow card-list to control layout */
+  padding-bottom: 80px; /* Add enough space for the fixed footer */
 }
 .card-list {
   display: flex;
