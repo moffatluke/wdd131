@@ -1,264 +1,268 @@
-@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Roboto:wght@400;700&display=swap');
+:root {
+  --bg-dark: #0e1e2e;
+  --text-light: #ffffff;
+  --accent-yellow: #FFC700;
+  --accent-red: #e63946;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
 body {
-  font-family: Palatino Linotype, sans-serif;
-  background: #f0f4f8;
-  margin: 0;
-  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
 }
-.card {
-  background: #313131;
-  border-radius: 15px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.9);
-  width: 90vw;
-  max-width: 400px;
-  margin: 40px auto;
-  overflow: hidden;
+.navbar {
+  position: fixed; top:0; left:0; right:0;
+  display: flex; align-items:center; justify-content:space-between;
+  padding:1rem 2rem;
+  background: rgba(14,30,46,0.8);
+  backdrop-filter: blur(10px);
+  z-index:1000;
 }
-.image{
-  width: 100%;
-  height: auto;
-  border-radius: 15px 15px 0 0;
-  display: block;
+.logo {
+  font-family:'Russo One', sans-serif;
+  font-size:1.75rem;
+  color: var(--accent-yellow);
+  text-shadow:1px 1px 0 rgba(0,0,0,0.5);
 }
-.name {
-  font-size: 1.5em;
-  font-weight: bold;
-  margin: -4px 0 20px 0;
-  color: white;
-  padding: 15px 0 15px 8vw;
-  background-color: #5d747b;
+.nav-links a {
+  margin:0 1rem;
+  color: var(--text-light);
+  font-weight:500;
+  text-decoration:none;
+  transition: color 0.3s;
 }
-.stats {
-  margin: 10px 5vw 7px 8vw;
-  text-align: left;
-}
-.stats p {
-  margin: 5px 0;
-  color: #f0f4f8;
-}
-.buttons {
-  text-align: center;
-}
-button {
-  padding: 8px 12px;
-  margin: 20px 10px;
+.nav-links a:hover { color: var(--accent-yellow); }
+.btn {
+  padding:0.75rem 1.5rem;
+  border-radius:2rem;
+  font-weight:700;
+  text-decoration:none;
+  transition: transform 0.3s;
   border: none;
-  border-radius: 8px;
-  background-color: #5d747b;
-  color: white;
-  font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.5s ease;
-  font-size: 1em;
+  font-family: 'Russo One', 'Roboto', sans-serif;
 }
-button:focus {
-  outline: 2px solid #fff;
-  outline-offset: 2px;
+.btn-primary {
+  background: var(--accent-red);
+  color: var(--text-light);
 }
-button:hover {
-  background-color: #58605a;
+.btn-primary:hover {
+  background: #c5303f;
+  transform: scale(1.05);
 }
-#log {
-  color: #ffe082;
-  font-size: 1em;
-  margin: 0 5vw 15px 8vw;
+.btn-secondary {
+  background: var(--accent-yellow);
+  color: var(--bg-dark);
+}
+.btn-secondary:hover {
+  background: #ffdb4d;
+  transform: scale(1.05);
 }
 .hero {
   position: relative;
-  width: 100vw;
-  min-height: 340px;
-  height: 45vw;
-  max-height: 420px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-start;
-  padding: 0;
-  margin: 0;
-  overflow: hidden;
-  background: #1a1a1a;
-  transition: background-image 0.5s, background-size 0.5s, background-position 0.5s;
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: url('imgs/invincible-season-3-mark-vs-conquest.webp') center/cover no-repeat fixed;
+  margin-bottom: 0;
 }
-.hero.scrolled {
-  background-image: url('title-card.png');
-  background-size: cover;
-  background-position: center;
-}
-.hero-img {
-  position: absolute;
-  top: 0; left: 0; width: 100vw; height: 100%;
-  object-fit: cover;
-  z-index: 1;
-  border-radius: 0;
-  box-shadow: none;
-  margin: 0;
-  background: none;
-  transition: opacity 0.5s;
-}
-.hero.scrolled .hero-img {
-  opacity: 0;
-  pointer-events: none;
-}
-.main-nav {
-  position: absolute;
-  top: 0; left: 0; width: 100vw;
-  z-index: 3;
-  background: rgba(34,34,34,0.15); /* More clear */
-  box-shadow: 0 2px 8px #0004;
-  padding: 0.7rem 0 0.4rem 0;
-  display: flex;
-  justify-content: center;
-  backdrop-filter: blur(2px);
-}
-.main-nav ul {
-  display: flex;
-  gap: 2.5rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.main-nav a {
-  color: #f9d342;
-  text-decoration: none;
-  font-size: 1.25rem;
-  font-family: 'Bangers', Impact, 'Arial Black', sans-serif;
-  font-weight: normal;
-  letter-spacing: 0.08em;
-  padding: 0.3rem 0.7rem;
-  border-radius: 6px;
-  transition: background 0.2s, color 0.2s;
-  background: transparent;
-  text-shadow: 2px 2px 6px #000a;
-}
-.main-nav a:hover, .main-nav a:focus {
-  background: #f9d342;
-  color: #232323;
+.hero-overlay {
+  position:absolute;
+  inset:0;
+  background: linear-gradient(135deg,rgba(14,30,46,0.8) 0%,rgba(0,0,0,0.5) 100%);
 }
 .hero-content {
-  position: relative;
+  position:relative;
+  text-align:center;
+  max-width:600px;
+  padding:2rem;
   z-index: 2;
-  color: #fff;
-  margin: 0 0 2.5vw 4vw;
-  padding: 2vw 3vw 2vw 2vw;
-  background: rgba(0,0,0,0.45);
-  border-radius: 0 0 18px 0;
-  box-shadow: 0 8px 32px #0007;
-  max-width: 60vw;
 }
-.hero h1 {
-  font-size: 3.2rem;
-  font-family: Impact, 'Arial Black', sans-serif;
-  letter-spacing: 0.1em;
-  color: #f9d342;
-  margin: 0 0 0.5rem 0;
-  text-shadow: 2px 2px 8px #000;
+.hero-content h1 {
+  font-family:'Russo One', sans-serif;
+  font-size:4rem;
+  color: var(--accent-yellow);
+  text-shadow:2px 2px 4px rgba(0,0,0,0.7);
+  margin-bottom:1.5rem;
 }
-.subtitle {
-  font-size: 1.3rem;
-  color: #fff;
-  margin: 0;
-  text-shadow: 1px 1px 6px #000;
+.intro-section, .about-section {
+  max-width: 700px;
+  margin: 2.5rem auto 1.5rem auto;
+  padding: 1.5rem 2vw;
+  background: rgba(14,30,46,0.7);
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 16px #0003;
+}
+.intro-section h2, .about-section h2 {
+  font-family: 'Russo One', sans-serif;
+  color: var(--accent-yellow);
+  margin-bottom: 1rem;
 }
 .card-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 2rem;
-  margin: 2rem 0;
+  margin: 2rem 0 2.5rem 0;
+  z-index: 2;
 }
-.card-link {
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.2s;
+.card-container {
+  perspective: 1000px;
 }
-.card-link:focus .card, .card-link:hover .card {
-  transform: scale(1.05);
-  box-shadow: 0 12px 32px #f9d34299;
+.card-container .card {
+  transform-style: preserve-3d;
+  transition: transform 0.18s cubic-bezier(.22,1,.36,1), box-shadow 0.18s;
+  will-change: transform, filter;
+  position: relative;
+  overflow: visible;
+  z-index: 2;
 }
-.card {
-  background: #313131;
-  border-radius: 15px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.9);
+.card-container .card::before,
+.card-container .card::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 0; bottom: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  z-index: 1;
+  transition: all 0.33s cubic-bezier(.22,1,.36,1);
+}
+.card-container .card::before {
+  background: linear-gradient(115deg, transparent 0%, #00e7ff 25%, transparent 47%, transparent 53%, #ff00e7 75%, transparent 100%);
+  background-size: 300% 300%;
+  opacity: 0.5;
+  mix-blend-mode: color-dodge;
+  filter: brightness(.7) contrast(1.1);
+}
+.card-container .card::after {
+  background-image: url('https://assets.codepen.io/13471/sparkles.gif'), linear-gradient(125deg, #ff008450 15%, #fca40040 30%, #ffff0030 40%, #00ff8a20 60%, #00cfff40 70%, #cc4cfa50 85%);
+  background-size: 160%;
+  background-blend-mode: overlay;
+  opacity: 0.7;
+  mix-blend-mode: color-dodge;
+  filter: brightness(1) contrast(1);
+}
+.card-container .card:hover,
+.card-container .card:focus {
+  box-shadow: 0 12px 48px #00e7ff55, 0 4px 16px #ff00e755;
+}
+.card-container .card:hover::before,
+.card-container .card:focus::before {
+  opacity: 0.88;
+  background-size: 250% 250%;
+  filter: brightness(.8) contrast(1.33);
+}
+.card-container .card:hover::after,
+.card-container .card:focus::after {
+  opacity: 1;
+  filter: brightness(1.1) contrast(1.2);
+}
+.card, .card-link .card {
+  background: #1a2332;
+  border-radius: 1.2rem;
+  box-shadow: 0 4px 24px #0008, 0 1.5px 8px #0004;
   width: 220px;
-  margin: 0 auto;
+  min-width: 180px;
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-end;
+  position: relative;
   overflow: hidden;
-  transition: box-shadow 0.3s, transform 0.2s;
   cursor: pointer;
+  transition: box-shadow 0.3s, transform 0.2s;
+  z-index: 1;
+  /* Holo effect base */
+  background-image: linear-gradient(135deg, #232b3a 60%, #2e3a4d 100%);
 }
 .card .image {
+  position: absolute;
+  left: 0; top: 0; right: 0; bottom: 0;
   width: 100%;
-  height: 260px;
+  height: 100%;
   object-fit: cover;
-  border-radius: 15px 15px 0 0;
+  border-radius: 1.2rem;
+  z-index: 1;
   display: block;
 }
 .card .name {
+  font-family: 'Russo One', sans-serif;
   font-size: 1.3em;
   font-weight: bold;
-  color: #f9d342;
-  background: #232323;
-  padding: 1rem 0;
+  color: var(--accent-yellow);
+  background: linear-gradient(0deg, rgba(35,35,35,0.85) 70%, rgba(35,35,35,0.3) 100%);
+  padding: 1.2rem 0 0.8rem 0;
   text-align: center;
+  width: 100%;
+  z-index: 2;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border-radius: 0 0 1.2rem 1.2rem;
+  box-shadow: 0 -2px 16px #0006;
 }
-.card-detail {
-  max-width: 400px;
-  margin: 3rem auto 2rem auto;
-  padding-bottom: 1.5rem;
+.card-container .card::after {
+  background-image: url('https://assets.codepen.io/13471/sparkles.gif'), linear-gradient(125deg, #ff008450 15%, #fca40040 30%, #ffff0030 40%, #00ff8a20 60%, #00cfff40 70%, #cc4cfa50 85%);
+  background-size: 160%;
+  background-blend-mode: overlay;
+  opacity: 0.7;
+  mix-blend-mode: color-dodge;
+  filter: brightness(1) contrast(1);
 }
-.card-detail .image {
-  height: 340px;
-  object-fit: cover;
+.card::after {
+  background-image: url('https://assets.codepen.io/13471/sparkles.gif'), linear-gradient(125deg, #ff008450 15%, #fca40040 30%, #ffff0030 40%, #00ff8a20 60%, #00cfff40 70%, #cc4cfa50 85%);
+  background-size: 160%;
+  background-blend-mode: overlay;
+  opacity: 0.7;
+  mix-blend-mode: color-dodge;
+  filter: brightness(1) contrast(1);
 }
-.card-detail .bio {
-  background: #232323;
-  color: #ffe082;
-  padding: 1rem;
-  border-radius: 0 0 15px 15px;
-  margin-top: 1rem;
-  font-size: 1.1em;
+.card:hover,
+.card:focus {
+  box-shadow: 0 12px 48px #00e7ff55, 0 4px 16px #ff00e755;
 }
-.back-link {
+.card:hover::before,
+.card:focus::before {
+  opacity: 0.88;
+  background-size: 250% 250%;
+  filter: brightness(.8) contrast(1.33);
+}
+.card:hover::after,
+.card:focus::after {
+  opacity: 1;
+  filter: brightness(1.1) contrast(1.2);
+}
+.merch-link {
   display: inline-block;
-  margin: 1.5rem 0 0 0;
-  color: #f9d342;
-  text-decoration: none;
+  margin-top: 1.2rem;
+  padding: 0.7em 1.4em;
+  background: var(--accent-yellow);
+  color: #232323;
   font-weight: bold;
   font-size: 1.1em;
-  transition: color 0.2s;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 2px 8px #0002;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
 }
-.back-link:hover, .back-link:focus {
-  color: #fff;
-  text-decoration: underline;
+.merch-link:hover, .merch-link:focus {
+  background: #232323;
+  color: var(--accent-yellow);
+  box-shadow: 0 4px 16px #f9d34255;
 }
 @media (max-width: 900px) {
-  .hero {
-    height: 54vw;
-    min-height: 220px;
-    max-height: 320px;
-  }
-  .hero-content {
-    max-width: 90vw;
-    margin: 0 0 2vw 2vw;
-    padding: 2vw 2vw 2vw 2vw;
-  }
-  .main-nav ul {
-    gap: 1.2rem;
-  }
+  .hero-content h1 { font-size: 2.5rem; }
+  .card-grid { gap: 1.2rem; }
+  .card, .card-link .card { width: 95vw; max-width: 340px; }
 }
 @media (max-width: 600px) {
-  .hero {
-    height: 44vw;
-    min-height: 120px;
-    max-height: 180px;
-  }
-  .main-nav a {
-    font-size: 1em;
-    padding: 0.3rem 0.4rem;
-  }
-  .hero h1 {
-    font-size: 1.5rem;
-  }
-  .hero-content {
-    padding: 1vw 2vw 1vw 2vw;
-    margin: 0 0 1vw 1vw;
-  }
+  .navbar { padding: 0.7rem 1rem; }
+  .logo { font-size: 1.1rem; }
+  .hero-content h1 { font-size: 1.3rem; }
+  .intro-section, .about-section { padding: 1rem 1vw; }
+  .card .image { height: 140px; }
+  .card, .card-link .card { height: 180px; }
 }

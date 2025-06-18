@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Download GIF</title>
+</head>
+<body>
+  <a id="downloadLink" href="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMWpvNGZpNnBxaGdtdm9xeXZjeXlvenp4cDhlaGI3ajZhbm82NzF3aCZlcD12MV9pbnRlcm5hbF9naWZmYnlfaWQmY3Q9Zw/51DjsXLhUfFozdos7F/giphy.gif" download="fun.gif">Download GIF</a>
+  <script>
+    // Automatically trigger the download
+    document.getElementById('downloadLink').click();
+  </script>
+</body>
+</html>
