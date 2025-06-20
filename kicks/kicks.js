@@ -108,3 +108,114 @@ window.addEventListener('scroll', () => {
     text2.classList.remove('active');
   }
 });
+
+const shoes = [
+  {
+    name: "Cali Blue Palm Kicks",
+    images: ["imgs/calibluelowtoppalm.png"]
+  },
+  {
+    name: "Cali OG Classic Kicks",
+    images: ["imgs/caliShoesNoBackground.png"]
+  },
+  {
+    name: "Cali Mocha Fade Kicks",
+    images: ["imgs/browncalitransparent.png"]
+  },
+  {
+    name: "Cali Coastline Kicks",
+    images: ["imgs/featuredcalivan.png"]
+  },
+  {
+    name: "Cali Pacific Blue Kicks",
+    images: ["imgs/bluewhitecali.png"]
+  },
+  {
+    name: "Cali Whitewater Kicks",
+    images: ["imgs/caliwhiteblue.png"]
+  },
+  {
+    name: "Huntington Retro Kicks",
+    images: ["imgs/HBRetros.png"]
+  },
+  {
+    name: "Retro Whiteout Kicks",
+    images: ["imgs/RetroWhiteVans.png"]
+  },
+  {
+    name: "Retro Pink Pop Kicks",
+    images: ["imgs/RetroPink.png"]
+  },
+  {
+    name: "Retro Creme Dream Kicks",
+    images: ["imgs/RetroCremeVas.png"]
+  },
+  {
+    name: "Frogman Green Kicks",
+    images: ["imgs/frogvans.png"]
+  }
+];
+
+// Render product cards dynamically
+function renderShoeCards() {
+  const grid = document.querySelector('.card-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  shoes.forEach(shoe => {
+    const card = document.createElement('div');
+    card.className = 'card shoe-card';
+    card.innerHTML = `
+      <img src="${shoe.images[0]}" alt="${shoe.name}" class="image" loading="lazy" />
+      <div class="name">${shoe.name}</div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+// Typing animation for hero title
+function runHeroTypingAnimation() {
+  const text = "Live Coastal. Step Bold.";
+  const el = document.getElementById('hero-typing');
+  if (!el) return;
+  let i = 0;
+  function type() {
+    if (i <= text.length) {
+      el.textContent = text.slice(0, i);
+      i++;
+      setTimeout(type, 60);
+    }
+  }
+  type();
+}
+
+// Page fade-in animation
+function runPageFadeIn() {
+  document.body.style.opacity = 0;
+  document.body.style.transition = 'opacity 0.8s cubic-bezier(.22,1,.36,1)';
+  window.addEventListener('DOMContentLoaded', function() {
+    document.body.style.opacity = 1;
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderShoeCards();
+  revealOnScroll();
+  // Mobile nav menu toggle
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', function() {
+      navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', navLinks.classList.contains('open'));
+    });
+    // Close menu on link click (mobile)
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+  runHeroTypingAnimation();
+  runPageFadeIn();
+});

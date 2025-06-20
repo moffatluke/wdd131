@@ -34,7 +34,7 @@ const shoes = [
     images: [
       "imgs/RetroPink.png"
     ],
-    price: "$70",
+    price: "$180",
     sizes: [6, 7, 8, 9, 10, 11, 12],
     description: "Stand out with these bold retro pink Vans. Soft suede upper, classic waffle outsole, and a pop of color for those who like to make a statement.",
     reviews: [
@@ -121,18 +121,13 @@ function renderShoeDetail(shoe) {
 function renderReviews(shoe) {
   // Use shoe.reviews if present, otherwise random generic reviews
   let reviews = shoe.reviews && shoe.reviews.length ? shoe.reviews : getRandomReviews(5);
-  const section = document.getElementById('reviews');
-  section.innerHTML = `
-    <h2>Reviews</h2>
-    <div class="review-list">
-      ${reviews.length ? reviews.map(r => `
-        <div class="review">
-          <strong>${r.user}</strong> <span class="rating">${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}</span>
-          <p>${r.text}</p>
-        </div>
-      `).join('') : '<p>No reviews yet.</p>'}
+  const section = document.getElementById('review-list');
+  section.innerHTML = reviews.length ? reviews.map(r => `
+    <div class="review">
+      <strong>${r.user}</strong> <span class="rating">${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}</span>
+      <p>${r.text}</p>
     </div>
-  `;
+  `).join('') : '<p>No reviews yet.</p>';
 }
 
 function renderOtherProducts(currentIdx) {

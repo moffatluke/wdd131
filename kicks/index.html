@@ -10,74 +10,42 @@
   <link href="kicks.css" rel="stylesheet">
 </head>
 <body>
-  <header class="navbar">
-    <div class="logo">Kicks</div>
-    <nav class="nav-links">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="navbar" role="banner">
+    <div class="logo">
+      <img src="imgs/kickslogo.png" alt="Kicks Collection logo: stylized blue sneaker silhouette with palm tree" class="logo-img" style="height: 2.2rem; width: auto; vertical-align: middle;" />
+    </div>
+    <nav class="nav-links" id="navLinks" aria-label="Main navigation">
       <a href="#featured">Featured</a>
       <a href="#shop">Shop</a>
       <a href="#about">About</a>
     </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navLinks">
+      <span class="menu-bar" aria-hidden="true"></span>
+      <span class="menu-bar" aria-hidden="true"></span>
+      <span class="menu-bar" aria-hidden="true"></span>
+    </button>
     <a href="#shop" class="btn btn-primary">Shop Now</a>
   </header>
-  <section class="hero">
-    <div class="hero-overlay"></div>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-content">
-      <h1>Step Up Your Game.<br/>Step Into Style.</h1>
+      <h1 class="hero-title" id="hero-title"><span id="hero-typing"></span></h1>
+      <p class="hero-subtext">Discover the latest drop of California-inspired sneakers, crafted for comfort and designed for bold self-expression. Step into the new wave of modern kicks.</p>
       <a href="#shop" class="btn btn-secondary">Browse Collection</a>
     </div>
     <div class="modern-hero-img-wrap">
-      <span class="modern-hero-new">NEW ARRIVAL</span>
-      <img src="imgs/ChatGPT Image Jun 20, 2025, 10_20_22 AM.png" alt="Featured Sneaker - Sunset Palms" class="modern-hero-img" loading="lazy" />
+      <img src="imgs/calibluelowtoppalm.png" alt="Cali Blue Palm Kicks: beige and navy blue sneaker with palm tree and ocean wave design, transparent background, beach-inspired style." class="modern-hero-img" loading="lazy" />
+      <button class="modern-hero-new" aria-label="See new arrival shoes">NEW ARRIVAL</button>
     </div>
   </section>
-  <main>
+  <main id="main-content">
     <section class="intro-section">
       <h2>Welcome to the Kicks Collection</h2>
       <p>Discover the latest and greatest in premium sneakers. Explore our featured shoes below and find your perfect pair for every occasion. Click on a product card to learn more or to buy now.</p>
     </section>
-    <section class="card-grid" id="shop">
-      <a href="#" class="card-link" aria-label="Cali Blue Palms">
-        <div class="card">
-          <img class="image" src="imgs/cali-blue-palms.png" alt="Cali Blue Palms">
-          <div class="name">Cali Blue Palms</div>
-        </div>
-      </a>
-      <a href="#" class="card-link" aria-label="Retro White Vans">
-        <div class="card">
-          <img class="image" src="imgs/RetroWhiteVans.png" alt="Retro White Vans">
-          <div class="name">Retro White Vans</div>
-        </div>
-      </a>
-      <a href="#" class="card-link" aria-label="Retro Pink Vans">
-        <div class="card">
-          <img class="image" src="imgs/RetroPink.png" alt="Retro Pink Vans">
-          <div class="name">Retro Pink Vans</div>
-        </div>
-      </a>
-      <a href="#" class="card-link" aria-label="Retro Creme Vans">
-        <div class="card">
-          <img class="image" src="imgs/RetroCremeVas.png" alt="Retro Creme Vans">
-          <div class="name">Retro Creme Vans</div>
-        </div>
-      </a>
-      <a href="#" class="card-link" aria-label="Cali White Blue">
-        <div class="card">
-          <img class="image" src="imgs/caliwhiteblue.png" alt="Cali White Blue">
-          <div class="name">Cali White Blue</div>
-        </div>
-      </a>
-      <a href="#" class="card-link" aria-label="Blue White Cali">
-        <div class="card">
-          <img class="image" src="imgs/bluewhitecali.png" alt="Blue White Cali">
-          <div class="name">Blue White Cali</div>
-        </div>
-      </a>
-      <a href="#" class="card-link" aria-label="Frog Vans">
-        <div class="card">
-          <img class="image" src="imgs/frogvans.png" alt="Frog Vans">
-          <div class="name">Frog Vans</div>
-        </div>
-      </a>
+    <section class="card-grid" id="shop" aria-label="Shop all sneakers">
+      <!-- Product cards will be rendered here by kicks.js -->
     </section>
     <section class="about-section" id="about">
       <h2>About This Project</h2>
@@ -85,31 +53,11 @@
       <p><a href="#shop" class="merch-link">Shop All Sneakers &rarr;</a></p>
     </section>
   </main>
-  <footer class="footer">
+  <footer class="footer" role="contentinfo">
     <div class="footer-content">
-      <span>Fan project &copy; 2025 Kicks Collection</span>
+      <span>&copy; 2025 Kicks TM</span>
     </div>
   </footer>
   <script src="kicks.js"></script>
-  <script>
-// Navbar background on scroll
-window.addEventListener('scroll', function() {
-  const navbar = document.querySelector('.navbar');
-  if (window.scrollY > 40) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
-  }
-});
-
-// Card click: go to shoe.html with shoe index in query string
-const cards = document.querySelectorAll('.card-link');
-cards.forEach((card, idx) => {
-  card.addEventListener('click', function(e) {
-    e.preventDefault();
-    window.location.href = `shoe.html?shoe=${idx}`;
-  });
-});
-</script>
 </body>
 </html>

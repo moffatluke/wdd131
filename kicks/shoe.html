@@ -16,58 +16,17 @@
   </header>
   <main>
     <section class="nike-product-layout">
-      <div class="shoe-main">
-        <div class="shoe-images">
-          <img id="main-shoe-img" src="imgs/cali-blue-palms.png" alt="Cali Blue Palms" class="main-img" />
-          <div class="thumb-list">
-            <img src="imgs/cali-blue-palms.png" class="thumb selected" data-idx="0" alt="Cali Blue Palms view 1">
-            <img src="imgs/bluewhitecali.png" class="thumb" data-idx="1" alt="Cali Blue Palms view 2">
-            <img src="imgs/caliwhiteblue.png" class="thumb" data-idx="2" alt="Cali Blue Palms view 3">
-          </div>
-        </div>
-        <div class="shoe-info">
-          <h1>Cali Blue Palms</h1>
-          <p class="shoe-price">$65</p>
-          <p>A cool blue sneaker with palm tree accents, perfect for summer.</p>
-          <label for="size-select">Size:</label>
-          <select id="size-select">
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-          </select>
-          <button class="btn btn-primary">Add to Cart</button>
-        </div>
-      </div>
+      <div id="shoe-detail"></div>
     </section>
     <section class="reviews-section">
       <h2>Reviews</h2>
-      <div class="review-list" id="review-list">
-        <!-- Reviews will be rendered by JS -->
-      </div>
+      <div class="review-list" id="review-list"></div>
     </section>
     <section class="other-products-section">
       <h2>Other Products</h2>
-      <div class="other-products-grid" id="other-products-grid">
-        <!-- Product cards will be rendered by JS -->
-      </div>
+      <div class="other-products-grid" id="other-products-grid"></div>
     </section>
   </main>
   <script src="shoe.js"></script>
-  <script>
-  // Thumbnail click event
-  const thumbs = document.querySelectorAll('.thumb');
-  const mainImg = document.getElementById('main-shoe-img');
-  thumbs.forEach(thumb => {
-    thumb.addEventListener('click', function() {
-      mainImg.src = this.src;
-      thumbs.forEach(t => t.classList.remove('selected'));
-      this.classList.add('selected');
-    });
-  });
-  </script>
 </body>
 </html>
