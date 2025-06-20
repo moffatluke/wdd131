@@ -1,3 +1,46 @@
+// Modern Kicks Landing Page JS
+// Smooth scroll for nav links
+const navLinks = document.querySelectorAll('.nav-links a, .btn-primary, .btn-secondary');
+navLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (href && href.startsWith('#')) {
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  });
+});
+
+// Card hover ripple effect
+const cards = document.querySelectorAll('.card');
+cards.forEach(card => {
+  card.addEventListener('mousedown', function(e) {
+    const ripple = document.createElement('span');
+    ripple.className = 'ripple';
+    ripple.style.left = e.offsetX + 'px';
+    ripple.style.top = e.offsetY + 'px';
+    this.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 600);
+  });
+});
+
+// Button click animation
+const btns = document.querySelectorAll('.btn');
+btns.forEach(btn => {
+  btn.addEventListener('mousedown', function() {
+    btn.style.transform = 'scale(0.96)';
+  });
+  btn.addEventListener('mouseup', function() {
+    btn.style.transform = '';
+  });
+  btn.addEventListener('mouseleave', function() {
+    btn.style.transform = '';
+  });
+});
+
 // Kicks Landing Page Animations
 // Reveal shoe cards on scroll
 function revealOnScroll() {
