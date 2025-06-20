@@ -1032,6 +1032,63 @@ footer {
   margin-left: 0.5rem;
   font-size: 1.1em;
 }
+.other-products-section {
+  max-width: 1200px;
+  margin: 2.5rem auto 2rem auto;
+  background: #fff;
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 16px #2563eb11;
+  padding: 2rem 2vw;
+}
+.other-products-section h2 {
+  font-size: 1.4rem;
+  color: #2563eb;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+}
+.other-products-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: flex-start;
+}
+.other-product-card {
+  background: #f7fafd;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px #2563eb11;
+  width: 200px;
+  min-width: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.2rem 1rem 1rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.other-product-card:hover {
+  box-shadow: 0 8px 24px #2563eb22;
+  transform: translateY(-4px) scale(1.04);
+}
+.other-product-img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border-radius: 0.7rem;
+  margin-bottom: 0.7rem;
+  background: #fff;
+}
+.other-product-name {
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: #2563eb;
+  margin-bottom: 0.2rem;
+}
+.other-product-price {
+  font-size: 1rem;
+  color: #1e40af;
+  font-weight: 600;
+}
 @media (max-width: 900px) {
   .nike-product-layout, .shoe-main {
     flex-direction: column;
