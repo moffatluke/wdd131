@@ -161,15 +161,48 @@ function renderShoeCards() {
   const grid = document.querySelector('.card-grid');
   if (!grid) return;
   grid.innerHTML = '';
-  shoes.forEach(shoe => {
+  shoes.forEach((shoe, idx) => {
     const card = document.createElement('div');
     card.className = 'card shoe-card';
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('role', 'button');
+    card.setAttribute('aria-label', `View details for ${shoe.name}`);
     card.innerHTML = `
       <img src="${shoe.images[0]}" alt="${shoe.name}" class="image" loading="lazy" />
       <div class="name">${shoe.name}</div>
     `;
+    card.addEventListener('click', () => {
+      window.location.href = `shoe.html?shoe=${encodeURIComponent(idx)}`;
+    });
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        window.location.href = `shoe.html?shoe=${encodeURIComponent(idx)}`;
+      }
+    });
     grid.appendChild(card);
   });
+}
+
+function renderProductDetail() {
+  const detailSection = document.getElementById('product-detail');
+  if (!detailSection) return;
+  const params = new URLSearchParams(window.location.search);
+  const idx = parseInt(params.get('shoe'), 10);
+  if (isNaN(idx) || !shoes[idx]) {
+    detailSection.innerHTML = '<p style="padding:2rem;">Product not found. <a href="index.html#shop">Back to shop</a></p>';
+    return;
+  }
+  const shoe = shoes[idx];
+  detailSection.innerHTML = `
+    <div class="product-detail-card">
+      <img src="${shoe.images[0]}" alt="${shoe.name}" class="product-detail-img" />
+      <div class="product-detail-info">
+        <h1 class="product-detail-title">${shoe.name}</h1>
+        <p class="product-detail-desc">Premium California-inspired sneaker. Iconic style, all-day comfort, and a look that stands out. (Demo description)</p>
+        <a href="index.html#shop" class="btn btn-secondary">Back to Shop</a>
+      </div>
+    </div>
+  `;
 }
 
 // Typing animation for hero title
@@ -197,9 +230,60 @@ function runPageFadeIn() {
   });
 }
 
+// --- Cart logic ---
+function updateCartIcon() {
+  const cartIcon = document.getElementById('cartIcon');
+  const cartCount = document.getElementById('cartCount');
+  let count = parseInt(localStorage.getItem('kicksCartCount') || '0', 10);
+  if (count > 0) {
+    cartIcon.style.display = 'flex';
+    cartCount.textContent = count;
+  } else {
+    cartIcon.style.display = 'none';
+    cartCount.textContent = '0';
+  }
+}
+function addToCart() {
+  let count = parseInt(localStorage.getItem('kicksCartCount') || '0', 10);
+  count++;
+  localStorage.setItem('kicksCartCount', count);
+  updateCartIcon();
+}
+// --- Product image magnifier effect for shoe.html ---
+function addProductImageMagnifier() {
+  const mainImg = document.getElementById('main-shoe-img');
+  if (!mainImg) return;
+  let magnifier;
+  mainImg.addEventListener('mouseenter', function(e) {
+    magnifier = document.createElement('div');
+    magnifier.className = 'img-magnifier-glass';
+    mainImg.parentElement.appendChild(magnifier);
+    magnifier.style.backgroundImage = `url('${mainImg.src}')`;
+    magnifier.style.backgroundRepeat = 'no-repeat';
+    magnifier.style.backgroundSize = `${mainImg.width * 2}px ${mainImg.height * 2}px`;
+    magnifier.style.display = 'block';
+  });
+  mainImg.addEventListener('mousemove', function(e) {
+    if (!magnifier) return;
+    const rect = mainImg.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const zoom = 2;
+    magnifier.style.left = `${x - 60}px`;
+    magnifier.style.top = `${y - 60}px`;
+    magnifier.style.backgroundPosition = `-${x * zoom - 60}px -${y * zoom - 60}px`;
+  });
+  mainImg.addEventListener('mouseleave', function() {
+    if (magnifier) {
+      magnifier.remove();
+      magnifier = null;
+    }
+  });
+}
 document.addEventListener('DOMContentLoaded', () => {
   renderShoeCards();
   revealOnScroll();
+  updateCartIcon();
   // Mobile nav menu toggle
   const menuToggle = document.getElementById('menuToggle');
   const navLinks = document.getElementById('navLinks');
@@ -218,4 +302,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   runHeroTypingAnimation();
   runPageFadeIn();
+  // If on shoe.html, attach to Add to Cart button
+  if (window.location.pathname.endsWith('shoe.html')) {
+    addProductImageMagnifier();
+  }
 });

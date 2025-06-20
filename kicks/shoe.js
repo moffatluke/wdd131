@@ -1,69 +1,115 @@
 // Example shoe data array
 const shoes = [
   {
-    name: "Cali Blue Palms",
-    images: [
-      "imgs/cali-blue-palms.png",
-      "imgs/bluewhitecali.png",
-      "imgs/caliwhiteblue.png"
-    ],
-    price: "$65",
+    name: "Cali Blue Palm Kicks",
+    images: ["imgs/calibluelowtoppalm.png"],
+    price: "$75",
     sizes: [6, 7, 8, 9, 10, 11, 12],
-    description: "A cool blue sneaker with palm tree accents, perfect for summer. Features a lightweight sole, breathable canvas, and a unique palm print for a laid-back California vibe. Great for everyday wear or a day at the beach.",
+    description: "A cool blue sneaker with palm tree accents, perfect for summer. Lightweight sole, breathable canvas, and a unique palm print for a laid-back California vibe.",
     reviews: [
       { user: "Alex", rating: 5, text: "Super comfy and stylish!" },
       { user: "Jordan", rating: 4, text: "Love the color and fit." }
     ]
   },
   {
-    name: "Retro White Vans",
-    images: [
-      "imgs/RetroWhiteVans.png",
-      "imgs/RetroCremeVas.png"
-    ],
-    price: "$65",
+    name: "Cali OG Classic Kicks",
+    images: ["imgs/caliShoesNoBackground.png"],
+    price: "$80",
     sizes: [6, 7, 8, 9, 10, 11, 12],
-    description: "Classic white Vans with a retro vibe for everyday style. Durable rubber sole, cushioned insole, and timeless design make these a must-have for any sneaker collection.",
+    description: "The original California classic. Timeless style, all-day comfort, and a look that never goes out of fashion.",
     reviews: [
       { user: "Sam", rating: 5, text: "Goes with everything!" },
       { user: "Taylor", rating: 4, text: "Clean and comfortable." }
     ]
   },
   {
-    name: "Retro Pink Vans",
-    images: [
-      "imgs/RetroPink.png"
-    ],
-    price: "$180",
+    name: "Cali Mocha Fade Kicks",
+    images: ["imgs/browncalitransparent.png"],
+    price: "$85",
     sizes: [6, 7, 8, 9, 10, 11, 12],
-    description: "Stand out with these bold retro pink Vans. Soft suede upper, classic waffle outsole, and a pop of color for those who like to make a statement.",
+    description: "Rich brown tones and a transparent fade for a unique, earthy look. Perfect for any season.",
     reviews: [
       { user: "Morgan", rating: 5, text: "Love the color!" }
     ]
   },
   {
-    name: "Frog Vans",
-    images: [
-      "imgs/frogvans.png"
-    ],
-    price: "$80",
+    name: "Cali Coastline Kicks",
+    images: ["imgs/featuredcalivan.png"],
+    price: "$90",
     sizes: [6, 7, 8, 9, 10, 11, 12],
-    description: "Fun frog-themed Vans for a playful look. Features a custom frog print, durable canvas, and a comfortable fit for all-day adventures.",
+    description: "Inspired by the California coast. Features a wave motif and relaxed style for beach days or city strolls.",
     reviews: [
-      { user: "Chris", rating: 4, text: "Unique and fun!" }
+      { user: "Chris", rating: 5, text: "Lightweight and stylish. My new favorite pair!" }
     ]
   },
   {
-    name: "Cali White Blue",
-    images: [
-      "imgs/caliwhiteblue.png",
-      "imgs/bluewhitecali.png"
-    ],
+    name: "Cali Pacific Blue Kicks",
+    images: ["imgs/bluewhitecali.png"],
     price: "$75",
     sizes: [6, 7, 8, 9, 10, 11, 12],
-    description: "Cali style in a crisp white and blue colorway. Lightweight, flexible, and perfect for pairing with jeans or shorts. Inspired by the West Coast lifestyle.",
+    description: "Pacific blue colorway with crisp white accents. Flexible, comfortable, and ready for adventure.",
     reviews: [
       { user: "Jamie", rating: 5, text: "Perfect for summer!" }
+    ]
+  },
+  {
+    name: "Cali Whitewater Kicks",
+    images: ["imgs/caliwhiteblue.png"],
+    price: "$75",
+    sizes: [6, 7, 8, 9, 10, 11, 12],
+    description: "Cali style in a crisp white and blue colorway. Lightweight, flexible, and perfect for pairing with jeans or shorts.",
+    reviews: [
+      { user: "Pat", rating: 5, text: "Excellent arch support and cushioning." }
+    ]
+  },
+  {
+    name: "Huntington Retro Kicks",
+    images: ["imgs/HBRetros.png"],
+    price: "$85",
+    sizes: [6, 7, 8, 9, 10, 11, 12],
+    description: "Retro-inspired design with Huntington Beach vibes. Durable and stylish for any occasion.",
+    reviews: [
+      { user: "Riley", rating: 4, text: "Looks great with jeans or shorts. Versatile and cool." }
+    ]
+  },
+  {
+    name: "Retro Whiteout Kicks",
+    images: ["imgs/RetroWhiteVans.png"],
+    price: "$65",
+    sizes: [6, 7, 8, 9, 10, 11, 12],
+    description: "Classic whiteout look for a clean, modern style. Goes with everything!",
+    reviews: [
+      { user: "Taylor", rating: 5, text: "Absolutely love these shoes! Super comfortable for all-day wear." }
+    ]
+  },
+  {
+    name: "Retro Pink Pop Kicks",
+    images: ["imgs/RetroPink.png"],
+    price: "$80",
+    sizes: [6, 7, 8, 9, 10, 11, 12],
+    description: "Stand out with these bold retro pink kicks. Soft suede upper, classic outsole, and a pop of color for those who like to make a statement.",
+    reviews: [
+      { user: "Morgan", rating: 5, text: "Love the color!" }
+    ]
+  },
+  {
+    name: "Retro Creme Dream Kicks",
+    images: ["imgs/RetroCremeVas.png"],
+    price: "$80",
+    sizes: [6, 7, 8, 9, 10, 11, 12],
+    description: "Dreamy creme tones and retro styling. A must-have for any sneakerhead.",
+    reviews: [
+      { user: "Alexis", rating: 5, text: "Perfect for walking and casual outings. Highly recommend!" }
+    ]
+  },
+  {
+    name: "Frogman Green Kicks",
+    images: ["imgs/frogvans.png"],
+    price: "$80",
+    sizes: [6, 7, 8, 9, 10, 11, 12],
+    description: "Fun frog-themed kicks for a playful look. Features a custom frog print, durable canvas, and a comfortable fit for all-day adventures.",
+    reviews: [
+      { user: "Chris", rating: 4, text: "Unique and fun!" }
     ]
   }
   // Add more shoes as needed
@@ -160,10 +206,71 @@ function getShoeIndexFromQuery() {
   return parseInt(params.get('shoe')) || 0;
 }
 
+// --- Product image magnifier effect for shoe.html ---
+function addProductImageMagnifier() {
+  const mainImg = document.getElementById('main-shoe-img');
+  if (!mainImg) return;
+  let magnifier;
+  mainImg.addEventListener('mouseenter', function(e) {
+    magnifier = document.createElement('div');
+    magnifier.className = 'img-magnifier-glass';
+    mainImg.parentElement.appendChild(magnifier);
+    magnifier.style.backgroundImage = `url('${mainImg.src}')`;
+    magnifier.style.backgroundRepeat = 'no-repeat';
+    magnifier.style.backgroundSize = `${mainImg.width * 2}px ${mainImg.height * 2}px`;
+    magnifier.style.display = 'block';
+  });
+  mainImg.addEventListener('mousemove', function(e) {
+    if (!magnifier) return;
+    const rect = mainImg.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const zoom = 2;
+    magnifier.style.left = `${x - 60}px`;
+    magnifier.style.top = `${y - 60}px`;
+    magnifier.style.backgroundPosition = `-${x * zoom - 60}px -${y * zoom - 60}px`;
+  });
+  mainImg.addEventListener('mouseleave', function() {
+    if (magnifier) {
+      magnifier.remove();
+      magnifier = null;
+    }
+  });
+}
+
+// --- Cart logic for shoe.html ---
+function updateCartIcon() {
+  const cartIcon = window.parent && window.parent.document.getElementById('cartIcon') || document.getElementById('cartIcon');
+  const cartCount = window.parent && window.parent.document.getElementById('cartCount') || document.getElementById('cartCount');
+  let count = parseInt(localStorage.getItem('kicksCartCount') || '0', 10);
+  if (cartIcon && cartCount) {
+    if (count > 0) {
+      cartIcon.style.display = 'flex';
+      cartCount.textContent = count;
+    } else {
+      cartIcon.style.display = 'none';
+      cartCount.textContent = '0';
+    }
+  }
+}
+function addToCart() {
+  let count = parseInt(localStorage.getItem('kicksCartCount') || '0', 10);
+  count++;
+  localStorage.setItem('kicksCartCount', count);
+  updateCartIcon();
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   const idx = getShoeIndexFromQuery();
   const shoe = shoes[idx] || shoes[0];
   renderShoeDetail(shoe);
   renderReviews(shoe);
   renderOtherProducts(idx);
+  addProductImageMagnifier();
+  updateCartIcon();
+  document.body.addEventListener('click', function(e) {
+    if (e.target && e.target.classList.contains('btn-primary') && e.target.textContent.match(/add to cart/i)) {
+      addToCart();
+    }
+  });
 });
