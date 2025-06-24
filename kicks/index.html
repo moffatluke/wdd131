@@ -6,14 +6,14 @@
   <title>Kicks Collection</title>
   <meta name="description" content="Landing page for Kicks Collection, featuring premium sneaker product cards.">
   <meta name="author" content="Luke Moffat">
-  <link rel="icon" href="imgs/bluewhitecali.png">
-  <link href="kicks.css" rel="stylesheet">
+  <link rel="icon" href="assets/imgs/bluewhitecali.png">
+  <link href="assets/css/kicks.css" rel="stylesheet">
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
   <header class="navbar" role="banner">
     <div class="logo">
-      <img src="imgs/kickslogo.png" alt="Kicks Collection logo: stylized blue sneaker silhouette with palm tree" class="logo-img" style="height: 2.2rem; width: auto; vertical-align: middle;" />
+      <img src="assets/imgs/kickslogo.png" alt="Kicks Collection logo: stylized blue sneaker silhouette with palm tree" class="logo-img" style="height: 2.2rem; width: auto; vertical-align: middle;" />
     </div>
     <nav class="nav-links" id="navLinks" aria-label="Main navigation">
       <a href="#featured">Featured</a>
@@ -31,16 +31,12 @@
       <span class="cart-count" id="cartCount" aria-live="polite">0</span>
     </div>
   </header>
-  <section class="hero" aria-labelledby="hero-title">
+  <section class="hero" aria-labelledby="hero-title" style="background: url('assets/imgs/calibluelowtoppalm.png') no-repeat right bottom/contain, var(--accent-blue-gradient);">
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-content">
       <h1 class="hero-title" id="hero-title"><span id="hero-typing"></span></h1>
       <p class="hero-subtext">Discover the latest drop of California-inspired sneakers, crafted for comfort and designed for bold self-expression. Step into the new wave of modern kicks.</p>
       <a href="#shop" class="btn btn-secondary">Browse Collection</a>
-    </div>
-    <div class="modern-hero-img-wrap">
-      <img src="imgs/calibluelowtoppalm.png" alt="Cali Blue Palm Kicks: beige and navy blue sneaker with palm tree and ocean wave design, transparent background, beach-inspired style." class="modern-hero-img" loading="lazy" />
-      <button class="modern-hero-new" aria-label="See new arrival shoes">NEW ARRIVAL</button>
     </div>
   </section>
   <main id="main-content">
@@ -62,6 +58,6 @@
       <span>&copy; 2025 Kicks TM</span>
     </div>
   </footer>
-  <script src="kicks.js"></script>
+  <script src="assets/js/kicks.js"></script>
 </body>
 </html>

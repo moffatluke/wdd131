@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kicks Collection Site Plan</title>
+  <link rel="stylesheet" href="styles/site-plan.css">
+</head>
+<body>
+  <header>
+    <h1>Kicks Collection: Personal Web Application Site Plan</h1>
+  </header>
+  <main>
+    <section>
+      <h2>Purpose & Audience</h2>
+      <p>The Kicks Collection site is designed to showcase and sell modern, California-inspired sneakers. The site targets sneaker enthusiasts, fashion-forward shoppers, and anyone interested in unique, comfortable footwear. The goal is to provide an engaging, visually appealing, and easy-to-navigate experience for users to explore and purchase sneakers.</p>
+    </section>
+    <section>
+      <h2>Dynamic Elements</h2>
+      <ul>
+        <li>Product cards are rendered dynamically from a JavaScript array of sneaker objects (see <code>kicks.js</code>).</li>
+        <li>Responsive navigation menu with a hamburger toggle for mobile (see <code>menu-toggle</code> in HTML/CSS).</li>
+        <li>Animated hero section with a typing effect (see <code>hero-typing</code> in <code>kicks.js</code>).</li>
+        <li>Cart icon updates and event handling for adding/removing items (see <code>cartIcon</code> and <code>cartCount</code>).</li>
+        <li>Conditional rendering for featured/new arrival products.</li>
+        <li>DOM interaction: selecting, modifying, and reacting to events (e.g., menu, cart, product cards).</li>
+        <li>Use of objects, arrays, and array methods (forEach, map, filter, etc.).</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Logo</h2>
+      <img src="../kicks/imgs/kickslogo.png" alt="Kicks Collection Logo" style="max-width:200px;">
+      <p>The logo is a stylized blue sneaker silhouette with a palm tree, representing the California theme. (Located at <code>kicks/imgs/kickslogo.png</code>)</p>
+    </section>
+    <section>
+      <h2>Colors & Fonts</h2>
+      <ul>
+        <li><strong>Primary Blue:</strong> #1976d2 (var(--primary-blue))</li>
+        <li><strong>Accent Blue:</strong> #2563eb (var(--accent-blue))</li>
+        <li><strong>Accent Orange:</strong> #f57c00 (var(--accent-orange))</li>
+        <li><strong>Background:</strong> #f7fafd (var(--bg-dark)), gradient: <code>linear-gradient(120deg, #e0e7ff 60%, #2563eb 100%)</code></li>
+        <li><strong>Text:</strong> #222e3a (var(--text-light)), #222 (var(--gray-dark))</li>
+        <li><strong>Fonts:</strong> 'Outfit', 'Montserrat', Arial, sans-serif (main); 'Bebas Neue', 'Montserrat', cursive, sans-serif (logo)</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Content</h2>
+      <ul>
+        <li><strong>Home page:</strong> Hero section, featured product, shop section with product cards, about section.</li>
+        <li><strong>Product data:</strong> Name, description, price, and images for each sneaker (see <code>kicks.js</code> and <code>kicks/imgs/</code>).</li>
+        <li><strong>Child page:</strong> Individual product details (e.g., <code>shoe.html</code>) or a blog about sneaker culture.</li>
+        <li><strong>Images:</strong> Product images, logo, and icons (see <code>kicks/imgs/</code>).</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Wireframes</h2>
+      <p>Home Page:</p>
+      <img src="wireframe-home.png" alt="Home Page Wireframe" style="max-width:400px;">
+      <p>Child Page:</p>
+      <img src="wireframe-child.png" alt="Child Page Wireframe" style="max-width:400px;">
+      <p>Wireframes will be added as images or sketches showing the layout for the home and child pages.</p>
+    </section>
+  </main>
+</body>
+</html>

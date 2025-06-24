@@ -112,47 +112,35 @@ window.addEventListener('scroll', () => {
 const shoes = [
   {
     name: "Cali Blue Palm Kicks",
-    images: ["imgs/calibluelowtoppalm.png"]
-  },
-  {
-    name: "Cali OG Classic Kicks",
-    images: ["imgs/caliShoesNoBackground.png"]
+    images: ["assets/imgs/calibluelowtoppalm.png"]
   },
   {
     name: "Cali Mocha Fade Kicks",
-    images: ["imgs/browncalitransparent.png"]
-  },
-  {
-    name: "Cali Coastline Kicks",
-    images: ["imgs/featuredcalivan.png"]
+    images: ["assets/imgs/browncalitransparent.png"]
   },
   {
     name: "Cali Pacific Blue Kicks",
-    images: ["imgs/bluewhitecali.png"]
+    images: ["assets/imgs/bluewhitecali.png"]
   },
   {
     name: "Cali Whitewater Kicks",
-    images: ["imgs/caliwhiteblue.png"]
+    images: ["assets/imgs/caliwhiteblue.png"]
   },
   {
     name: "Huntington Retro Kicks",
-    images: ["imgs/HBRetros.png"]
+    images: ["assets/imgs/HBRetros.png"]
   },
   {
     name: "Retro Whiteout Kicks",
-    images: ["imgs/RetroWhiteVans.png"]
-  },
-  {
-    name: "Retro Pink Pop Kicks",
-    images: ["imgs/RetroPink.png"]
+    images: ["assets/imgs/RetroWhiteVans.png"]
   },
   {
     name: "Retro Creme Dream Kicks",
-    images: ["imgs/RetroCremeVas.png"]
+    images: ["assets/imgs/RetroCremeVas.png"]
   },
   {
     name: "Frogman Green Kicks",
-    images: ["imgs/frogvans.png"]
+    images: ["assets/imgs/frogvans.png"]
   }
 ];
 
