@@ -50,6 +50,15 @@ body::-webkit-scrollbar {
   z-index: 1000;
   transition: background 0.3s;
 }
+.navbar .navbar-spacer {
+  flex: 1 1 auto;
+}
+.cart-icon {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
 .navbar.scrolled {
   background: var(--nav-bg-solid);
   box-shadow: 0 2px 12px #2563eb22;
@@ -133,20 +142,23 @@ body::-webkit-scrollbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: none;
+  background: url('../imgs/herovid.gif') center center/cover no-repeat;
   margin-bottom: 0;
   padding-left: 4vw;
   border-radius: 0;
   box-shadow: none;
   overflow: visible;
 }
-.hero-overlay {
-  display: none;
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255,255,255,0.18); /* subtle overlay for readability */
+  z-index: 0;
 }
 .hero-content {
   position: relative;
   z-index: 2;
-  /* allow overlap */
   text-align: left;
   max-width: 700px;
   padding: 3.5rem 0;
@@ -156,22 +168,35 @@ body::-webkit-scrollbar {
   justify-content: center;
   display: flex;
   flex-direction: column;
+  /* background removed for pure text contrast */
+  border-radius: 0;
+  box-shadow: none;
+}
+.hero-title, .hero-subtext {
+  color: #fff;
+  text-shadow: 0 3px 18px #2563eb, 0 1px 2px #1e40af;
 }
 .hero-title {
-  font-family: 'Outfit', 'Montserrat', Arial, sans-serif;
+  color: #fff;
   font-size: 6.2rem;
   font-weight: 900;
-  color: var(--accent-blue-dark);
-  text-shadow: 6px 6px 24px rgba(30,64,175,0.22), 0 2px 12px #2563eb33;
+  text-shadow: 0 3px 18px #2563eb, 0 1px 2px #1e40af;
   margin-bottom: 1.6rem;
   letter-spacing: 3px;
   line-height: 1.01;
   text-transform: uppercase;
+  font-family: 'Outfit', 'Montserrat', Arial, sans-serif;
+}
+@media (max-width: 900px) {
+  .hero-title {
+    font-size: 2.2rem;
+    letter-spacing: 1.2px;
+    text-shadow: 2px 2px 8px #2563eb99;
+    text-transform: none;
+  }
 }
 .hero-subtext {
-  font-size: 2.1rem;
-  max-width: 600px;
-  margin-bottom: 2.5rem;
+  color: #fff;
 }
 .modern-hero-img-wrap {
   position: relative;
@@ -694,5 +719,92 @@ footer {
     top: 56px;
     padding: 1.2rem 1.2rem 1.2rem 1rem;
     min-width: 120px;
+  }
+}
+
+.hero-shoe-card {
+  background: rgba(255,255,255,0.92);
+  border-radius: 2rem;
+  box-shadow: 0 6px 32px #2563eb33, 0 2px 12px #2563eb22;
+  padding: 2.2rem 2.5rem 1.5rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 420px;
+  margin: 0 auto;
+  border: 2.5px solid var(--accent-blue-light);
+}
+.modern-hero-img {
+  width: 100%;
+  max-width: 340px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  background: none;
+  box-shadow: none;
+  border-radius: 1.2rem;
+}
+
+.hero-centered {
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+.featured-card {
+  grid-column: span 2;
+  max-width: 520px;
+  min-width: 340px;
+  min-height: 420px;
+  background: var(--accent-white);
+  border-radius: 2.2rem;
+  box-shadow: 0 8px 36px #2563eb33, 0 2px 12px #2563eb22;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+  margin: 0 auto 2.5rem auto;
+  border: 2.5px solid var(--accent-blue-light);
+  padding: 2.5rem 2rem 3.5rem 2rem;
+  z-index: 2;
+}
+.featured-card .image {
+  width: 90%;
+  max-width: 340px;
+  height: 260px;
+  object-fit: contain;
+  margin: 0 auto 1.2rem auto;
+  display: block;
+  border-radius: 1.2rem;
+}
+.featured-badge {
+  position: absolute;
+  left: 50%;
+  bottom: 1.2rem;
+  transform: translateX(-50%);
+  background: var(--accent-blue);
+  color: #fff;
+  font-family: 'Montserrat', 'Russo One', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  padding: 0.7rem 2.2rem;
+  border-radius: 2rem;
+  box-shadow: 0 2px 8px #2563eb22;
+  letter-spacing: 1px;
+  text-align: center;
+  z-index: 3;
+}
+@media (max-width: 900px) {
+  .featured-card {
+    grid-column: span 1;
+    max-width: 98vw;
+    min-width: 0;
+    min-height: 320px;
+    padding: 1.2rem 0.5rem 2.2rem 0.5rem;
+  }
+  .featured-card .image {
+    max-width: 90vw;
+    height: 160px;
   }
 }

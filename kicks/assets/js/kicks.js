@@ -141,6 +141,10 @@ const shoes = [
   {
     name: "Frogman Green Kicks",
     images: ["assets/imgs/frogvans.png"]
+  },
+  {
+    name: "Cali Creme Logo Sweatshirt",
+    images: ["assets/imgs/kicks_creme_sweatshirt.png"]
   }
 ];
 
@@ -149,7 +153,32 @@ function renderShoeCards() {
   const grid = document.querySelector('.card-grid');
   if (!grid) return;
   grid.innerHTML = '';
-  shoes.forEach((shoe, idx) => {
+  // Featured card (first shoe)
+  if (shoes.length > 0) {
+    const featured = shoes[0];
+    const featuredCard = document.createElement('div');
+    featuredCard.className = 'card shoe-card featured-card';
+    featuredCard.setAttribute('tabindex', '0');
+    featuredCard.setAttribute('role', 'button');
+    featuredCard.setAttribute('aria-label', `View details for ${featured.name}`);
+    featuredCard.innerHTML = `
+      <img src="${featured.images[0]}" alt="${featured.name}" class="image" loading="lazy" />
+      <div class="name">${featured.name}</div>
+      <div class="featured-badge">New Arrival</div>
+    `;
+    featuredCard.addEventListener('click', () => {
+      window.location.href = `shoe.html?shoe=0`;
+    });
+    featuredCard.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        window.location.href = `shoe.html?shoe=0`;
+      }
+    });
+    grid.appendChild(featuredCard);
+  }
+  // Render the rest
+  for (let idx = 1; idx < shoes.length; idx++) {
+    const shoe = shoes[idx];
     const card = document.createElement('div');
     card.className = 'card shoe-card';
     card.setAttribute('tabindex', '0');
@@ -168,7 +197,7 @@ function renderShoeCards() {
       }
     });
     grid.appendChild(card);
-  });
+  }
 }
 
 function renderProductDetail() {

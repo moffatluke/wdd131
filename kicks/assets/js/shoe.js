@@ -2,7 +2,7 @@
 const shoes = [
   {
     name: "Cali Blue Palm Kicks",
-    images: ["imgs/calibluelowtoppalm.png"],
+    images: ["assets/imgs/calibluelowtoppalm.png"],
     price: "$75",
     sizes: [6, 7, 8, 9, 10, 11, 12],
     description: "A cool blue sneaker with palm tree accents, perfect for summer. Lightweight sole, breathable canvas, and a unique palm print for a laid-back California vibe.",
@@ -12,19 +12,8 @@ const shoes = [
     ]
   },
   {
-    name: "Cali OG Classic Kicks",
-    images: ["imgs/caliShoesNoBackground.png"],
-    price: "$80",
-    sizes: [6, 7, 8, 9, 10, 11, 12],
-    description: "The original California classic. Timeless style, all-day comfort, and a look that never goes out of fashion.",
-    reviews: [
-      { user: "Sam", rating: 5, text: "Goes with everything!" },
-      { user: "Taylor", rating: 4, text: "Clean and comfortable." }
-    ]
-  },
-  {
     name: "Cali Mocha Fade Kicks",
-    images: ["imgs/browncalitransparent.png"],
+    images: ["assets/imgs/browncalitransparent.png"],
     price: "$85",
     sizes: [6, 7, 8, 9, 10, 11, 12],
     description: "Rich brown tones and a transparent fade for a unique, earthy look. Perfect for any season.",
@@ -33,18 +22,8 @@ const shoes = [
     ]
   },
   {
-    name: "Cali Coastline Kicks",
-    images: ["imgs/featuredcalivan.png"],
-    price: "$90",
-    sizes: [6, 7, 8, 9, 10, 11, 12],
-    description: "Inspired by the California coast. Features a wave motif and relaxed style for beach days or city strolls.",
-    reviews: [
-      { user: "Chris", rating: 5, text: "Lightweight and stylish. My new favorite pair!" }
-    ]
-  },
-  {
     name: "Cali Pacific Blue Kicks",
-    images: ["imgs/bluewhitecali.png"],
+    images: ["assets/imgs/bluewhitecali.png"],
     price: "$75",
     sizes: [6, 7, 8, 9, 10, 11, 12],
     description: "Pacific blue colorway with crisp white accents. Flexible, comfortable, and ready for adventure.",
@@ -54,7 +33,7 @@ const shoes = [
   },
   {
     name: "Cali Whitewater Kicks",
-    images: ["imgs/caliwhiteblue.png"],
+    images: ["assets/imgs/caliwhiteblue.png"],
     price: "$75",
     sizes: [6, 7, 8, 9, 10, 11, 12],
     description: "Cali style in a crisp white and blue colorway. Lightweight, flexible, and perfect for pairing with jeans or shorts.",
@@ -64,7 +43,7 @@ const shoes = [
   },
   {
     name: "Huntington Retro Kicks",
-    images: ["imgs/HBRetros.png"],
+    images: ["assets/imgs/HBRetros.png"],
     price: "$85",
     sizes: [6, 7, 8, 9, 10, 11, 12],
     description: "Retro-inspired design with Huntington Beach vibes. Durable and stylish for any occasion.",
@@ -74,7 +53,7 @@ const shoes = [
   },
   {
     name: "Retro Whiteout Kicks",
-    images: ["imgs/RetroWhiteVans.png"],
+    images: ["assets/imgs/RetroWhiteVans.png"],
     price: "$65",
     sizes: [6, 7, 8, 9, 10, 11, 12],
     description: "Classic whiteout look for a clean, modern style. Goes with everything!",
@@ -83,18 +62,8 @@ const shoes = [
     ]
   },
   {
-    name: "Retro Pink Pop Kicks",
-    images: ["imgs/RetroPink.png"],
-    price: "$80",
-    sizes: [6, 7, 8, 9, 10, 11, 12],
-    description: "Stand out with these bold retro pink kicks. Soft suede upper, classic outsole, and a pop of color for those who like to make a statement.",
-    reviews: [
-      { user: "Morgan", rating: 5, text: "Love the color!" }
-    ]
-  },
-  {
     name: "Retro Creme Dream Kicks",
-    images: ["imgs/RetroCremeVas.png"],
+    images: ["assets/imgs/RetroCremeVas.png"],
     price: "$80",
     sizes: [6, 7, 8, 9, 10, 11, 12],
     description: "Dreamy creme tones and retro styling. A must-have for any sneakerhead.",
@@ -104,7 +73,7 @@ const shoes = [
   },
   {
     name: "Frogman Green Kicks",
-    images: ["imgs/frogvans.png"],
+    images: ["assets/imgs/frogvans.png"],
     price: "$80",
     sizes: [6, 7, 8, 9, 10, 11, 12],
     description: "Fun frog-themed kicks for a playful look. Features a custom frog print, durable canvas, and a comfortable fit for all-day adventures.",
@@ -211,24 +180,34 @@ function addProductImageMagnifier() {
   const mainImg = document.getElementById('main-shoe-img');
   if (!mainImg) return;
   let magnifier;
+  const glassSize = 60; // radius in px
+  const zoom = 2;
   mainImg.addEventListener('mouseenter', function(e) {
     magnifier = document.createElement('div');
     magnifier.className = 'img-magnifier-glass';
     mainImg.parentElement.appendChild(magnifier);
     magnifier.style.backgroundImage = `url('${mainImg.src}')`;
     magnifier.style.backgroundRepeat = 'no-repeat';
-    magnifier.style.backgroundSize = `${mainImg.width * 2}px ${mainImg.height * 2}px`;
+    magnifier.style.backgroundSize = `${mainImg.width * zoom}px ${mainImg.height * zoom}px`;
+    magnifier.style.width = magnifier.style.height = `${glassSize * 2}px`;
     magnifier.style.display = 'block';
+    magnifier.style.position = 'absolute';
+    magnifier.style.pointerEvents = 'none';
   });
   mainImg.addEventListener('mousemove', function(e) {
     if (!magnifier) return;
     const rect = mainImg.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const zoom = 2;
-    magnifier.style.left = `${x - 60}px`;
-    magnifier.style.top = `${y - 60}px`;
-    magnifier.style.backgroundPosition = `-${x * zoom - 60}px -${y * zoom - 60}px`;
+    // Mouse position relative to image
+    let x = e.clientX - rect.left;
+    let y = e.clientY - rect.top;
+    // Clamp so the glass stays within the image
+    x = Math.max(glassSize, Math.min(mainImg.width - glassSize, x));
+    y = Math.max(glassSize, Math.min(mainImg.height - glassSize, y));
+    // Position the magnifier absolutely relative to the image container
+    magnifier.style.left = `${x - glassSize}px`;
+    magnifier.style.top = `${y - glassSize}px`;
+    // Set background position for zoom effect
+    magnifier.style.backgroundPosition = `-${(x * zoom) - glassSize}px -${(y * zoom) - glassSize}px`;
   });
   mainImg.addEventListener('mouseleave', function() {
     if (magnifier) {
