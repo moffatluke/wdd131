@@ -684,6 +684,36 @@ footer {
   .hero { flex-direction: column; text-align: center; }
   .hero-content { margin: 2rem 0 0 0; max-width: 100%; }
   .modern-hero-img { max-width: 80vw; }
+  .card-grid {
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 100vw;
+    margin: 0 auto 2rem auto;
+    padding: 0 0.5rem;
+  }
+  .card {
+    margin: 0 auto;
+    width: 95vw;
+    min-width: 0;
+    max-width: 340px;
+  }
+  .nav-links {
+    width: 100vw;
+    left: 0;
+    right: 0;
+    align-items: flex-start;
+    padding: 2rem 1.2rem 2rem 1.2rem;
+    box-sizing: border-box;
+  }
+  .nav-links a, .nav-links .btn, .nav-links .btn-primary, .nav-links .btn-secondary {
+    width: 100%;
+    text-align: left;
+    margin: 0.2rem 0;
+    padding-left: 0.5rem;
+    border-radius: 1.2rem;
+  }
 }
 
 /* Menu Toggle Styles */
