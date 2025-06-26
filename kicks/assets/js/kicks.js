@@ -247,7 +247,7 @@ function runPageFadeIn() {
   });
 }
 
-// --- Cart logic ---
+// --- Cart icon show/hide logic ---
 function updateCartIcon() {
   const cartIcon = document.getElementById('cartIcon');
   const cartCount = document.getElementById('cartCount');
@@ -260,6 +260,8 @@ function updateCartIcon() {
     cartCount.textContent = '0';
   }
 }
+document.addEventListener('DOMContentLoaded', updateCartIcon);
+
 function addToCart() {
   let count = parseInt(localStorage.getItem('kicksCartCount') || '0', 10);
   count++;
@@ -323,4 +325,24 @@ document.addEventListener('DOMContentLoaded', () => {
   if (window.location.pathname.endsWith('shoe.html')) {
     addProductImageMagnifier();
   }
+});
+document.addEventListener('DOMContentLoaded', function() {
+  const navbar = document.querySelector('.navbar');
+  // Set a threshold for when to blur (e.g., after hero section or 80px)
+  const hero = document.querySelector('.hero');
+  let threshold = 80;
+  if (hero) {
+    // Use bottom of hero section as threshold if possible
+    const rect = hero.getBoundingClientRect();
+    threshold = rect.bottom + window.scrollY - navbar.offsetHeight;
+  }
+  function onScroll() {
+    if (window.scrollY > threshold) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  }
+  window.addEventListener('scroll', onScroll);
+  onScroll(); // run on load in case already scrolled
 });

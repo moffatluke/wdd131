@@ -45,10 +45,10 @@ body::-webkit-scrollbar {
   align-items: center;
   justify-content: flex-start;
   padding: 1rem 2rem;
-  background: var(--nav-bg);
-  backdrop-filter: blur(10px);
+  background: var(--nav-bg); /* transparent by default */
+  backdrop-filter: none; /* no blur by default */
   z-index: 1000;
-  transition: background 0.3s;
+  transition: background 0.3s, backdrop-filter 0.3s;
 }
 .navbar .navbar-spacer {
   flex: 1 1 auto;
@@ -60,8 +60,10 @@ body::-webkit-scrollbar {
   justify-content: flex-end;
 }
 .navbar.scrolled {
-  background: var(--nav-bg-solid);
+  background: var(--nav-bg-solid); /* solid/blurred after scroll */
   box-shadow: 0 2px 12px #2563eb22;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 .logo-img {
   height: 2.2rem;
@@ -140,14 +142,16 @@ body::-webkit-scrollbar {
   position: relative;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   background: url('../imgs/herovid.gif') center center/cover no-repeat;
   margin-bottom: 0;
-  padding-left: 4vw;
+  padding-left: 0;
   border-radius: 0;
   box-shadow: none;
   overflow: visible;
+  text-align: center;
 }
 .hero::before {
   content: '';
@@ -159,12 +163,12 @@ body::-webkit-scrollbar {
 .hero-content {
   position: relative;
   z-index: 2;
-  text-align: left;
+  text-align: center;
   max-width: 700px;
   padding: 3.5rem 0;
   color: #fff;
   flex: 1 1 0;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   display: flex;
   flex-direction: column;
@@ -201,10 +205,13 @@ body::-webkit-scrollbar {
 .modern-hero-img-wrap {
   position: relative;
   z-index: 1;
-  /* allow text to overlap image on smaller screens */
   max-width: 900px;
   min-width: 400px;
-  padding-right: 6vw;
+  padding-right: 0;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .modern-hero-img {
   width: auto !important;
@@ -263,68 +270,87 @@ body::-webkit-scrollbar {
 }
 @media (max-width: 1200px) and (min-width: 901px) {
   .hero {
-    flex-wrap: nowrap;
-  }
-  .hero-content {
-    margin-right: -12vw;
-    background: linear-gradient(90deg,rgba(255,255,255,0.92) 60%,rgba(255,255,255,0.0) 100%);
-    box-shadow: 0 4px 32px #2563eb11;
-    padding: 2.5rem 2.5vw 2.5rem 0;
-    border-radius: 2.5rem;
-    max-width: 700px;
-  }
-  .modern-hero-img-wrap {
-    margin-left: -8vw;
-    max-width: 700px;
-  }
-}
-@media (max-width: 900px) {
-  .hero {
     flex-direction: column;
-    text-align: center;
+    align-items: center;
     justify-content: center;
     padding-left: 0;
-    padding-top: 80px;
-    overflow: hidden;
+    padding-right: 0;
+    text-align: center;
+    min-height: 80vh;
   }
   .hero-content {
-    margin: 2rem 0 0 0;
-    max-width: 100%;
-    text-align: center;
-    align-items: center;
+    margin: 0;
     background: none;
     box-shadow: none;
     border-radius: 0;
-    padding: 0;
+    max-width: 700px;
+    padding: 3.5rem 0;
+    z-index: 2;
   }
   .modern-hero-img-wrap {
-    min-width: 220px;
-    max-width: 98vw;
-    padding-right: 0;
-    margin-left: 0;
-  }
-  .modern-hero-img {
-    width: 98vw !important;
-    height: auto !important;
-    max-width: 600px !important;
-    max-height: 340px !important;
-    min-width: 180px;
-    min-height: 120px;
     margin: 0 auto;
-    transform: rotate(22deg);
+    max-width: 700px;
+    min-width: 320px;
+    padding: 0;
+    align-items: center;
+    z-index: 1;
   }
-  .modern-hero-new {
-    margin-top: 1.2rem;
+  /* Remove any white card/box effect around hero words */
+  .hero-content {
+    background: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
   }
-  .hero-title {
-    font-size: 2.2rem;
-    letter-spacing: 1.2px;
-    text-shadow: 2px 2px 8px rgba(30,64,175,0.10);
-    text-transform: none;
+}
+
+/* --- BUTTON VERTICAL ALIGNMENT FIX --- */
+.btn, .btn.btn-primary, .btn.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  line-height: 1.2;
+  height: auto;
+}
+
+/* --- NAVBAR BUTTONS CONSISTENCY & RESPONSIVENESS --- */
+.nav-links a, .nav-links .btn, .nav-links .btn-primary, .nav-links .btn-secondary {
+  color: var(--accent-blue);
+  font-family: 'Montserrat', 'Russo One', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  background: none;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.6rem 1.5rem;
+  margin: 0 0.2rem;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  cursor: pointer;
+  outline: none;
+  box-shadow: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+}
+.nav-links a:hover, .nav-links .btn:hover, .nav-links .btn-primary:hover, .nav-links .btn-secondary:hover {
+  background: var(--accent-blue);
+  color: var(--accent-white);
+}
+
+/* Hide Shop Now button in nav on medium screens (redundant) */
+@media (max-width: 1200px) and (min-width: 901px) {
+  .btn.btn-primary {
+    display: none !important;
   }
-  .hero-subtext {
-    font-size: 1.05rem;
-    max-width: 95vw;
+}
+
+/* Make nav less crowded on medium screens */
+@media (max-width: 1200px) and (min-width: 901px) {
+  .nav-links {
+    gap: 1rem;
+    padding-right: 0.5rem;
   }
 }
 
@@ -806,5 +832,35 @@ footer {
   .featured-card .image {
     max-width: 90vw;
     height: 160px;
+  }
+}
+
+/* --- Skip Link: Only show when focused, style for accessibility --- */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--accent-blue);
+  color: #fff;
+  padding: 0.7rem 1.5rem;
+  z-index: 2000;
+  border-radius: 0 0 1.2rem 1.2rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: left 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 12px #2563eb22;
+}
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  outline: 3px solid #fff;
+  box-shadow: 0 4px 24px #2563eb55;
+}
+
+/* --- Hide Shop Now button on desktop --- */
+@media (min-width: 901px) {
+  .desktop-hide {
+    display: none !important;
   }
 }
