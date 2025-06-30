@@ -119,10 +119,6 @@ const shoes = [
     images: ["assets/imgs/browncalitransparent.png"]
   },
   {
-    name: "Cali Pacific Blue Kicks",
-    images: ["assets/imgs/bluewhitecali.png"]
-  },
-  {
     name: "Cali Whitewater Kicks",
     images: ["assets/imgs/caliwhiteblue.png"]
   },
@@ -135,16 +131,13 @@ const shoes = [
     images: ["assets/imgs/RetroWhiteVans.png"]
   },
   {
-    name: "Retro Creme Dream Kicks",
-    images: ["assets/imgs/RetroCremeVas.png"]
-  },
-  {
     name: "Frogman Green Kicks",
     images: ["assets/imgs/frogvans.png"]
   },
   {
     name: "Cali Creme Logo Sweatshirt",
-    images: ["assets/imgs/kicks_creme_sweatshirt.png"]
+    images: ["assets/imgs/kicks_creme_sweatshirt.png"],
+    isSweatshirt: true
   }
 ];
 
@@ -153,50 +146,19 @@ function renderShoeCards() {
   const grid = document.querySelector('.card-grid');
   if (!grid) return;
   grid.innerHTML = '';
-  // Featured card (first shoe)
-  if (shoes.length > 0) {
-    const featured = shoes[0];
-    const featuredCard = document.createElement('div');
-    featuredCard.className = 'card shoe-card featured-card';
-    featuredCard.setAttribute('tabindex', '0');
-    featuredCard.setAttribute('role', 'button');
-    featuredCard.setAttribute('aria-label', `View details for ${featured.name}`);
-    featuredCard.innerHTML = `
-      <img src="${featured.images[0]}" alt="${featured.name}" class="image" loading="lazy" />
-      <div class="name">${featured.name}</div>
-      <div class="featured-badge">New Arrival</div>
-    `;
-    featuredCard.addEventListener('click', () => {
-      window.location.href = `shoe.html?shoe=0`;
-    });
-    featuredCard.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        window.location.href = `shoe.html?shoe=0`;
-      }
-    });
-    grid.appendChild(featuredCard);
-  }
-  // Render the rest
-  for (let idx = 1; idx < shoes.length; idx++) {
+  for (let idx = 0; idx < shoes.length; idx++) {
     const shoe = shoes[idx];
-    const card = document.createElement('div');
-    card.className = 'card shoe-card';
-    card.setAttribute('tabindex', '0');
-    card.setAttribute('role', 'button');
-    card.setAttribute('aria-label', `View details for ${shoe.name}`);
-    card.innerHTML = `
+    const cardLink = document.createElement('a');
+    cardLink.className = 'card shoe-card card-link';
+    cardLink.setAttribute('tabindex', '0');
+    cardLink.setAttribute('role', 'button');
+    cardLink.setAttribute('aria-label', `View details for ${shoe.name}`);
+    cardLink.href = `shoe.html?shoe=${encodeURIComponent(idx)}`;
+    cardLink.innerHTML = `
       <img src="${shoe.images[0]}" alt="${shoe.name}" class="image" loading="lazy" />
-      <div class="name">${shoe.name}</div>
+      <div class="banner">${shoe.name}</div>
     `;
-    card.addEventListener('click', () => {
-      window.location.href = `shoe.html?shoe=${encodeURIComponent(idx)}`;
-    });
-    card.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        window.location.href = `shoe.html?shoe=${encodeURIComponent(idx)}`;
-      }
-    });
-    grid.appendChild(card);
+    grid.appendChild(cardLink);
   }
 }
 
