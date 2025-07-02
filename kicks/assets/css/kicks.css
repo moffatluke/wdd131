@@ -1,927 +1,170 @@
-/* --- Modern Kicks Sneaker Shop CSS --- */
+/* --- Modern Kicks Sneaker Shop CSS (Simplified) --- */
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Outfit:wght@400;700;900&display=swap');
 :root {
   --primary-blue: #1976d2;
-  --primary-blue-dark: #1565c0;
-  --primary-blue-light: #e3f2fd;
+  --accent-blue: #2563eb;
   --accent-orange: #f57c00;
   --white: #fff;
-  --gray-dark: #222;
-  --gray-light: #444;
-  --shadow-blue: #1976d255;
-  --shadow-blue-light: #90caf955;
-  --radius-lg: 48px;
-  --radius-md: 32px;
-  --radius-sm: 24px;
+  --bg-dark: #181c24;
+  --text-light: #e0e7ff;
+  --accent-white: #23272f;
+  --nav-bg: #1e293b;
+  --radius: 2rem;
   --font-main: 'Outfit', 'Montserrat', Arial, sans-serif;
   --font-logo: 'Bebas Neue', 'Montserrat', cursive, sans-serif;
-  --bg-dark: #f7fafd;
-  --text-light: #222e3a;
-  --accent-blue: #2563eb;
-  --accent-blue-light: #e0e7ff;
-  --accent-blue-dark: #1e40af;
-  --accent-blue-gradient: linear-gradient(120deg, #e0e7ff 60%, #2563eb 100%);
-  --accent-white: #fff;
-  --nav-bg: rgba(255,255,255,0.0);
-  --nav-bg-solid: rgba(255,255,255,0.96);
 }
-
 html, body {
-  margin: 0;
-  padding: 0;
+  margin: 0; padding: 0;
   font-family: var(--font-main);
-  background: var(--accent-blue-gradient);
+  background: linear-gradient(120deg, #23272f 60%, var(--accent-blue) 100%);
   color: var(--text-light);
   overflow-x: hidden;
+  scrollbar-width: none; /* Firefox */
 }
-body::-webkit-scrollbar { display: none; }
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
 
+/* --- NAVIGATION --- */
 .navbar {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  position: fixed; top: 0; left: 0; right: 0;
+  display: flex; align-items: center;
   padding: 1rem 2rem;
   background: var(--nav-bg);
-  backdrop-filter: none;
+  color: #fff;
   z-index: 1000;
-  transition: background 0.3s, backdrop-filter 0.3s;
+  box-shadow: 0 2px 8px #0002;
 }
-.navbar .navbar-spacer { flex: 1 1 auto; }
-.cart-icon {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
+.logo-img { height: 2.2rem; }
+.logo {
+  margin-right: 2.5rem;
 }
-.navbar.scrolled {
-  background: var(--nav-bg-solid);
-  box-shadow: 0 2px 12px #2563eb22;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-.logo-img { height: 2.2rem; width: auto; vertical-align: middle; display: block; }
-.logo { display: flex; align-items: center; min-width: 2.2rem; min-height: 2.2rem; padding-right: 2.5rem; }
-.nav-links { display: flex; gap: 2rem; }
+.nav-links { display: flex; gap: 1.5rem; align-items: center; flex: 1; }
 .nav-links a {
-  color: var(--accent-blue);
-  font-family: 'Montserrat', 'Russo One', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 600;
-  text-decoration: none;
-  background: none;
-  border: none;
-  border-radius: 2rem;
-  padding: 0.6rem 1.5rem;
-  margin: 0 0.2rem;
-  transition: background 0.2s, color 0.2s, transform 0.2s;
-  cursor: pointer;
-  outline: none;
-  box-shadow: none;
-  display: inline-block;
+  color: #fff; background: none; padding: 0.5rem 1rem;
+  border-radius: 6px; text-decoration: none; font-weight: 600;
+  transition: background 0.2s, color 0.2s;
 }
-.nav-links a:hover {
-  background: var(--accent-blue);
-  color: var(--accent-white);
+.nav-links a:hover, .nav-links a:focus {
+  background: var(--accent-blue); color: #fff;
+}
+.menu-toggle { display: none; margin-left: auto; }
+.cart-icon { margin-left: auto; color: #fff; cursor: pointer; position: relative; }
+.cart-count {
+  position: absolute; top: -6px; right: -8px;
+  background: var(--accent-orange); color: #fff;
+  font-size: 0.95rem; font-weight: 700; border-radius: 50%; padding: 2px 7px;
 }
 
-/* --- DRY Button Styles --- */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 2rem;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  font-size: 1.1rem;
-  padding: 0.7rem 1.8rem;
-  text-decoration: none;
-  transition: all 0.2s ease-in-out;
-  cursor: pointer;
-  border: none;
-  background: none;
-}
-.btn--primary {
-  background: none;
-  color: var(--text-light);
-  border: 2px solid var(--accent-blue);
-}
-.btn--primary:hover {
-  background: var(--accent-blue);
-  color: var(--accent-white);
-}
-.btn--secondary {
-  background: var(--accent-blue);
-  color: var(--accent-white);
-}
-.btn--secondary:hover {
-  background: var(--accent-white);
-  color: var(--accent-blue);
-  border: 2px solid var(--accent-blue);
-}
-
-.hero {
-  position: relative;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: url('../imgs/herovid.gif') center center/cover no-repeat;
-  margin-bottom: 0;
-  padding-left: 0;
-  border-radius: 0;
-  box-shadow: none;
-  overflow: visible;
-  text-align: center;
-}
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(255,255,255,0.18);
-  z-index: 0;
-}
-.hero-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  max-width: 700px;
-  padding: 3.5rem 0;
-  color: #fff;
-  flex: 1 1 0;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  flex-direction: column;
-  border-radius: 0;
-  box-shadow: none;
-}
-.hero-title, .hero-subtext {
-  color: #fff;
-  text-shadow: 0 3px 18px #2563eb, 0 1px 2px #1e40af;
-}
+/* --- HERO --- */
+.hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; background: none; }
 .hero-title {
+  font-size: 5.5rem;
+  font-weight: 1000;
   color: #fff;
-  font-size: 6.2rem;
-  font-weight: 900;
   text-shadow: 0 3px 18px #2563eb, 0 1px 2px #1e40af;
-  margin-bottom: 1.6rem;
-  letter-spacing: 3px;
-  line-height: 1.01;
-  text-transform: uppercase;
-  font-family: 'Outfit', 'Montserrat', Arial, sans-serif;
+  letter-spacing: 2px;
+  line-height: 1.05;
+}
+.hero-subtext {
+  color: #fff;
+  text-shadow: 0 3px 18px #2563eb, 0 1px 2px #1e40af;
 }
 @media (max-width: 900px) {
   .hero-title {
-    font-size: 2.2rem;
-    letter-spacing: 1.2px;
-    text-shadow: 2px 2px 8px #2563eb99;
-    text-transform: none;
-  }
-}
-.hero-subtext { color: #fff; }
-.modern-hero-img-wrap {
-  position: relative;
-  z-index: 1;
-  max-width: 900px;
-  min-width: 400px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.modern-hero-img {
-  width: auto !important;
-  height: 60vw !important;
-  max-width: 1000px !important;
-  max-height: 600px !important;
-  min-width: 320px;
-  min-height: 180px;
-  display: block;
-  align-self: center;
-  object-fit: contain;
-  transform: rotate(15deg);
-}
-.modern-hero-new {
-  display: inline-block;
-  font-family: 'Montserrat', 'Russo One', sans-serif;
-  font-size: 1.05rem;
-  font-weight: 700;
-  padding: 0.5rem 1.3rem;
-  border-radius: 2rem;
-  background: var(--accent-white);
-  color: var(--accent-blue);
-  border: 2px solid var(--accent-blue);
-  box-shadow: 0 2px 8px #2563eb22;
-  margin-top: 1.2rem;
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s, border 0.2s;
-  text-decoration: none;
-  align-self: center;
-}
-.modern-hero-new:hover, .modern-hero-new:focus {
-  background: var(--accent-blue);
-  color: var(--accent-white);
-  border: 2px solid var(--accent-blue);
-}
-.img-magnifier-glass {
-  position: absolute;
-  border: 2.5px solid #2563eb;
-  border-radius: 50%;
-  cursor: zoom-in;
-  width: 120px;
-  height: 120px;
-  box-shadow: 0 4px 24px #2563eb33;
-  pointer-events: none;
-  z-index: 10;
-  display: none;
-  background-color: rgba(255,255,255,0.15);
-  background-repeat: no-repeat;
-  background-size: 200% 200%;
-  transition: box-shadow 0.2s;
-}
-@media (max-width: 1200px) and (min-width: 901px) {
-  .hero {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding-left: 0;
-    padding-right: 0;
-    text-align: center;
-    min-height: 80vh;
-  }
-  .hero-content {
-    margin: 0;
-    background: none;
-    box-shadow: none;
-    border-radius: 0;
-    max-width: 700px;
-    padding: 3.5rem 0;
-    z-index: 2;
-  }
-  .modern-hero-img-wrap {
-    margin: 0 auto;
-    max-width: 700px;
-    min-width: 320px;
-    padding: 0;
-    align-items: center;
-    z-index: 1;
-  }
-  .hero-content {
-    background: none !important;
-    box-shadow: none !important;
-    border-radius: 0 !important;
+    font-size: 2.5rem;
+    font-weight: 900;
+    letter-spacing: 1px;
   }
 }
 
-/* --- Dark Mode Support --- */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-dark: #181c24;
-    --accent-white: #23272f;
-    --text-light: #e0e7ff;
-    --gray-dark: #e0e7ff;
-    --accent-blue-gradient: linear-gradient(120deg, #23272f 60%, #2563eb 100%);
-  }
-  body, html {
-    background: var(--accent-blue-gradient);
-    color: var(--text-light);
-  }
-  .card, .featured-card, .hero-shoe-card, .other-product-card {
-    background: #23272f;
-    color: var(--text-light);
-    border-color: var(--accent-blue-dark);
-  }
-  .about-section, .intro-section, .reviews-section, .other-products-section {
-    background: transparent;
-    color: var(--text-light);
-  }
-  .footer, footer {
-    background: #23272f;
-    color: var(--text-light);
-  }
-  .btn--primary {
-    color: var(--accent-white);
-    border-color: var(--accent-blue);
-  }
-  .btn--primary:hover {
-    background: var(--accent-blue);
-    color: #fff;
-  }
-  .btn--secondary {
-    background: var(--accent-blue);
-    color: #fff;
-  }
-  .btn--secondary:hover {
-    background: #23272f;
-    color: var(--accent-blue);
-    border: 2px solid var(--accent-blue);
-  }
+/* --- BUTTONS --- */
+.btn, .btn-primary, .btn-secondary {
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: var(--radius); font-weight: 600; font-size: 1.1rem;
+  padding: 0.7rem 1.8rem; text-decoration: none; cursor: pointer; border: none;
+  background: var(--accent-blue); color: #fff;
+  transition: background 0.2s, color 0.2s;
 }
+.btn-secondary { background: var(--primary-blue); }
+.btn:hover, .btn:focus { background: #111e3a; color: #fff; }
 
-/* --- Card Entry Animation --- */
-@keyframes cardFadeIn {
-  0% { opacity: 0; transform: translateY(40px) scale(0.98); }
-  100% { opacity: 1; transform: translateY(0) scale(1); }
-}
-.card, .featured-card, .shoe-card {
-  animation: cardFadeIn 0.7s cubic-bezier(.22,1,.36,1) both;
-  background: var(--accent-white);
-  border-radius: 1.5rem;
-  box-shadow: 0 4px 24px #2563eb22, 0 1.5px 8px #2563eb11;
-  width: 240px;
-  min-width: 240px;
-  max-width: 240px;
-  height: 340px;
-  min-height: 340px;
-  max-height: 340px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  padding: 0;
-  border: 1.5px solid var(--accent-blue-light);
-  transition: box-shadow 0.3s, transform 0.2s, border 0.2s;
-  z-index: 1;
-  text-decoration: none;
-}
-.card:hover {
-  transform: translateY(-10px) scale(1.045);
-  box-shadow: 0 12px 36px #2563eb33, 0 4px 16px #2563eb22;
-  border: 1.5px solid var(--accent-blue);
-}
-.card .image {
-  width: 100%;
-  max-width: 180px;
-  height: 160px;
-  object-fit: contain;
-  margin: 0 auto;
-  display: block;
-  border: none;
-  border-radius: 1.2rem;
-  background: transparent;
-  position: static;
-  flex-shrink: 0;
-}
-.card .banner {
-  width: 100%;
-  background: var(--accent-blue-light);
-  color: var(--accent-blue-dark);
-  text-align: center;
-  font-family: 'Montserrat', 'Russo One', sans-serif;
-  font-size: 1.12em;
-  font-weight: 700;
-  padding: 1.1rem 0 1.1rem 0;
-  border-radius: 0 0 1.5rem 1.5rem;
-  box-shadow: 0 -2px 16px #0003;
-  letter-spacing: 0.5px;
-  margin-top: 0;
-  position: relative;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.intro-section {
-  max-width: 700px;
-  margin: 2rem auto 2rem auto;
-  text-align: center;
-}
+/* --- PRODUCT CARDS --- */
 .card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 2.5rem;
-  max-width: 1100px;
-  margin: 0 auto 3rem auto;
-  padding: 0 1rem;
-}
-.card-link {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-  height: 100%;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2.5rem; max-width: 1100px; margin: 0 auto 1.5rem auto; padding: 0 1rem;
 }
 .card {
   background: var(--accent-white);
   border-radius: 1.5rem;
-  box-shadow: 0 4px 24px #2563eb22, 0 1.5px 8px #2563eb11;
+  box-shadow: 0 4px 24px #2563eb22;
   width: 240px;
-  min-width: 240px;
-  max-width: 240px;
-  height: 340px;
-  min-height: 340px;
-  max-height: 340px;
+  /* Remove fixed height for natural sizing */
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-  overflow: hidden;
+  align-items: stretch;
+  justify-content: flex-start;
   cursor: pointer;
   padding: 0;
-  border: 1.5px solid var(--accent-blue-light);
-  transition: box-shadow 0.3s, transform 0.2s, border 0.2s;
-  z-index: 1;
+  border: 1.5px solid #e0e7ff;
+  transition: box-shadow 0.3s, transform 0.2s;
   text-decoration: none;
+  overflow: hidden;
 }
-.card:hover {
-  transform: translateY(-10px) scale(1.045);
-  box-shadow: 0 12px 36px #2563eb33, 0 4px 16px #2563eb22;
-  border: 1.5px solid var(--accent-blue);
-}
-.card .image, .featured-card .image {
+.card:hover { transform: translateY(-10px) scale(1.045); box-shadow: 0 12px 36px #2563eb33; border: 1.5px solid var(--accent-blue); }
+.card .image {
   width: 100%;
-  max-width: 220px;
-  height: 200px;
+  max-width: 180px;
+  height: 130px;
   object-fit: contain;
-  margin: 0 auto;
+  border-radius: 1.5rem 1.5rem 0 0;
   display: block;
-  border: none;
-  border-radius: 1.5rem;
-  position: relative;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
-  background: transparent;
+  margin: 0 auto;
 }
-.card .name {
-  position: static;
-  margin-top: 0.5rem;
-}
-.card .price {
-  font-size: 1.08em;
-  font-weight: 700;
-  color: var(--accent-orange);
+.card .banner {
+  width: 100%;
+  background: #e0e7ff;
+  color: #1e40af;
   text-align: center;
-  margin-bottom: 0.2rem;
-  letter-spacing: 0.5px;
+  font-size: 1.12em;
+  font-weight: 700;
+  padding: 0.5rem 0;
+  border-radius: 0 0 1.5rem 1.5rem;
+  margin: 0;
 }
 
+/* --- PRODUCT DETAIL --- */
+.product-detail-card { display: flex; flex-wrap: wrap; gap: 3rem; max-width: 1200px; margin: 3rem auto 2rem auto; background: #fff; border-radius: 2rem; box-shadow: 0 4px 32px #2563eb11; padding: 2.5rem 2rem; }
+.shoe-images { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; min-width: 340px; }
+.main-img { width: 340px; height: 340px; object-fit: contain; border-radius: 1.5rem; background: #f7fafd; box-shadow: 0 2px 16px #2563eb22; }
+.shoe-info { flex: 1; display: flex; flex-direction: column; gap: 1.2rem; min-width: 260px; }
+.shoe-info h1 { font-size: 2.2rem; font-weight: 800; color: #222e3a; }
+.shoe-price { font-size: 1.4rem; color: var(--accent-blue); font-weight: 700; }
+.shoe-info label { font-weight: 600; color: #222e3a; }
+.shoe-info select { font-size: 1.1rem; padding: 0.5rem 1.2rem; border-radius: 1.2rem; border: 1.5px solid var(--accent-blue); background: #f7fafd; color: #222e3a; font-weight: 600; }
+.shoe-info button { background: var(--accent-blue); color: #fff; font-size: 1.1rem; font-weight: 700; border-radius: 2rem; padding: 0.8rem 2.2rem; margin-top: 1rem; cursor: pointer; transition: background 0.2s, transform 0.2s; box-shadow: 0 2px 12px #2563eb22; }
+.shoe-info button:hover { background: #1e40af; transform: scale(1.05); }
+
+/* --- FOOTER --- */
+.footer { background: var(--accent-white); color: #1e40af; box-shadow: 0 -2px 12px #2563eb22; padding: 24px 0 12px 0; text-align: center; font-size: 1rem; margin-top: 2rem; }
+.footer-content { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+
+/* --- ABOUT SECTION --- */
 .about-section {
   max-width: 700px;
   margin: 2rem auto 2rem auto;
   text-align: center;
-}
-.merch-link {
-  color: #6366f1;
-  font-weight: 700;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.merch-link:hover { color: #fbbf24; }
-
-footer {
-  background: var(--accent-white);
-  color: var(--accent-blue-dark);
-  box-shadow: 0 -2px 12px #2563eb22;
-  padding: 24px 0 12px 0;
-  text-align: center;
-  font-size: 1rem;
-  margin-top: 2rem;
-}
-.footer-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
 }
 
-/* Product Page Styles (shoe.html) */
-.nike-product-layout {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 3rem;
-  max-width: 1200px;
-  margin: 3rem auto 2rem auto;
-  background: #fff;
-  border-radius: 2rem;
-  box-shadow: 0 4px 32px #2563eb11;
-  padding: 2.5rem 2rem;
-}
-.shoe-main {
-  display: flex;
-  flex-direction: row;
-  gap: 2.5rem;
-  width: 100%;
-}
-.shoe-images {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-  min-width: 340px;
-}
-.main-img {
-  width: 340px;
-  height: 340px;
-  object-fit: contain;
-  border-radius: 1.5rem;
-  background: #f7fafd;
-  box-shadow: 0 2px 16px #2563eb22;
-}
-.thumb-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
-}
-.thumb {
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
-  border-radius: 0.7rem;
-  background: #f7fafd;
-  border: 2px solid transparent;
-  cursor: pointer;
-  transition: border 0.2s;
-}
-.thumb:hover, .thumb.selected { border: 2px solid #2563eb; }
-.shoe-info {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 1.2rem;
-  min-width: 260px;
-}
-.shoe-info h1 {
-  font-size: 2.2rem;
-  font-weight: 800;
-  color: #222e3a;
-  margin-bottom: 0.2rem;
-}
-.shoe-price {
-  font-size: 1.4rem;
-  color: #2563eb;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-}
-.shoe-info label {
-  font-weight: 600;
-  margin-top: 1rem;
-  color: #222e3a;
-}
-#size-select {
-  font-size: 1.1rem;
-  padding: 0.5rem 1.2rem;
-  border-radius: 1.2rem;
-  border: 1.5px solid #2563eb;
-  margin: 0.5rem 0 1rem 0;
-  background: #f7fafd;
-  color: #222e3a;
-  outline: none;
-  font-weight: 600;
-}
-.shoe-info button {
-  background: #2563eb;
-  color: #fff;
-  font-size: 1.1rem;
-  font-weight: 700;
-  border: none;
-  border-radius: 2rem;
-  padding: 0.8rem 2.2rem;
-  margin-top: 1rem;
-  cursor: pointer;
-  transition: background 0.2s, transform 0.2s;
-  box-shadow: 0 2px 12px #2563eb22;
-}
-.shoe-info button:hover {
-  background: #1e40af;
-  transform: scale(1.05);
-}
-.shoe-info p {
-  color: #444;
-  font-size: 1.08rem;
-  margin-bottom: 0.5rem;
-}
-.reviews-section {
-  max-width: 900px;
-  margin: 2.5rem auto 2rem auto;
-  background: #fff;
-  border-radius: 1.2rem;
-  box-shadow: 0 2px 16px #2563eb11;
-  padding: 2rem 2vw;
-}
-.reviews-section h2 {
-  font-size: 1.4rem;
-  color: #2563eb;
-  font-weight: 700;
-  margin-bottom: 1.2rem;
-}
-.review-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-}
-.review {
-  background: #f7fafd;
-  border-radius: 0.8rem;
-  padding: 1rem 1.2rem;
-  box-shadow: 0 1px 6px #2563eb11;
-}
-.review strong { color: #2563eb; font-weight: 700; }
-.rating { color: #fbbf24; margin-left: 0.5rem; font-size: 1.1em; }
-.other-products-section {
-  max-width: 1200px;
-  margin: 2.5rem auto 2rem auto;
-  background: #fff;
-  border-radius: 1.2rem;
-  box-shadow: 0 2px 16px #2563eb11;
-  padding: 2rem 2vw;
-}
-.other-products-section h2 {
-  font-size: 1.4rem;
-  color: #2563eb;
-  font-weight: 700;
-  margin-bottom: 1.2rem;
-}
-.other-products-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: flex-start;
-}
-.other-product-card {
-  background: #f7fafd;
-  border-radius: 1rem;
-  box-shadow: 0 2px 8px #2563eb11;
-  width: 200px;
-  min-width: 160px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1.2rem 1rem 1rem 1rem;
-  text-align: center;
-  cursor: pointer;
-  transition: box-shadow 0.2s, transform 0.2s;
-}
-.other-product-card:hover {
-  box-shadow: 0 8px 24px #2563eb22;
-  transform: translateY(-4px) scale(1.04);
-}
-.other-product-img {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-  border-radius: 0.7rem;
-  margin-bottom: 0.7rem;
-  background: #fff;
-}
-.other-product-name {
-  font-size: 1.08rem;
-  font-weight: 700;
-  color: #2563eb;
-  margin-bottom: 0.2rem;
-}
-.other-product-price {
-  font-size: 1rem;
-  color: #1e40af;
-  font-weight: 600;
-}
+/* --- RESPONSIVE --- */
 @media (max-width: 900px) {
-  .nike-product-layout, .shoe-main {
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-  }
-  .main-img { width: 90vw; height: 40vw; max-width: 340px; max-height: 340px; }
-  .shoe-images { min-width: 0; }
-  .hero { flex-direction: column; text-align: center; }
-  .hero-content { margin: 2rem 0 0 0; max-width: 100%; }
-  .modern-hero-img { max-width: 80vw; }
-  .card-grid {
-    justify-items: center;
-    align-items: center;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    max-width: 100vw;
-    margin: 0 auto 2rem auto;
-    padding: 0 0.5rem;
-  }
-  .card {
-    margin: 0 auto;
-    width: 95vw;
-    min-width: 0;
-    max-width: 340px;
-  }
-  .nav-links {
-    width: 100vw;
-    left: 0;
-    right: 0;
-    align-items: flex-start;
-    padding: 2rem 1.2rem 2rem 1.2rem;
-    box-sizing: border-box;
-  }
-  .nav-links a, .nav-links .btn {
-    width: 100%;
-    text-align: left;
-    margin: 0.2rem 0;
-    padding-left: 0.5rem;
-    border-radius: 1.2rem;
-  }
-}
-
-/* Menu Toggle Styles */
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 44px;
-  height: 44px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  margin-left: 1rem;
-  z-index: 1100;
-}
-.menu-bar {
-  width: 28px;
-  height: 3.5px;
-  background: var(--accent-blue);
-  margin: 4px 0;
-  border-radius: 2px;
-  transition: all 0.3s;
-  display: block;
-}
-@media (max-width: 900px) {
-  .nav-links {
-    position: fixed;
-    top: 64px;
-    right: 0;
-    background: var(--nav-bg-solid);
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 1.5rem;
-    padding: 2rem 2.5rem 2rem 2rem;
-    box-shadow: 0 8px 32px #2563eb22;
-    border-radius: 0 0 0 2rem;
-    transform: translateX(100%);
-    transition: transform 0.3s cubic-bezier(.22,1,.36,1);
-    z-index: 1050;
-    min-width: 180px;
-    display: flex;
-  }
-  .nav-links.open { transform: translateX(0); }
-  .menu-toggle { display: flex; }
-  .navbar { flex-wrap: wrap; }
-}
-@media (max-width: 600px) {
   .navbar { padding: 0.7rem 0.7rem; }
-  .nav-links {
-    top: 56px;
-    padding: 1.2rem 1.2rem 1.2rem 1rem;
-    min-width: 120px;
-  }
+  .card-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .card { width: 95vw; max-width: 340px; }
+  .product-detail-card, .shoe-images { flex-direction: column; align-items: center; gap: 2rem; }
+  .main-img { width: 90vw; max-width: 340px; }
 }
-
-.hero-shoe-card {
-  background: rgba(255,255,255,0.92);
-  border-radius: 2rem;
-  box-shadow: 0 6px 32px #2563eb33, 0 2px 12px #2563eb22;
-  padding: 2.2rem 2.5rem 1.5rem 2.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 420px;
-  margin: 0 auto;
-  border: 2.5px solid var(--accent-blue-light);
-}
-.modern-hero-img {
-  width: 100%;
-  max-width: 340px;
-  height: auto;
-  display: block;
-  object-fit: contain;
-  background: none;
-  box-shadow: none;
-  border-radius: 1.2rem;
-}
-
-.hero-centered {
-  align-items: center !important;
-  justify-content: center !important;
-  text-align: center !important;
-}
-
-.featured-card {
-  grid-column: span 2;
-  max-width: 520px;
-  min-width: 340px;
-  min-height: 420px;
-  background: var(--accent-white);
-  border-radius: 2.2rem;
-  box-shadow: 0 8px 36px #2563eb33, 0 2px 12px #2563eb22;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  position: relative;
-  margin: 0 auto 2.5rem auto;
-  border: 2.5px solid var(--accent-blue-light);
-  padding: 2.5rem 2rem 3.5rem 2rem;
-  z-index: 2;
-}
-.featured-card .image {
-  width: 100%;
-  max-width: 220px;
-  height: 220px;
-  object-fit: contain;
-  margin: 0 auto;
-  display: block;
-  border: none;
-  border-radius: 1.5rem;
-  position: relative;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
-  background: transparent;
-}
-.featured-badge {
-  position: absolute;
-  left: 50%;
-  top: 100%;
-  transform: translate(-50%, -60%);
-  background: var(--accent-orange);
-  color: #fff;
-  font-family: 'Montserrat', 'Russo One', sans-serif;
-  font-size: 1.08rem;
-  font-weight: 700;
-  padding: 0.7rem 2.2rem;
-  border-radius: 2rem;
-  box-shadow: 0 2px 8px #2563eb22;
-  letter-spacing: 1px;
-  text-align: center;
-  z-index: 100;
-  border: 2.5px solid #fff;
-  pointer-events: none;
-  clip-path: inset(-1.5rem -1.5rem 0 -1.5rem);
-  filter: drop-shadow(0 6px 16px #2563eb33);
-}
-
-@media (max-width: 900px) {
-  .featured-card {
-    grid-column: span 1;
-    max-width: 98vw;
-    min-width: 0;
-    min-height: 320px;
-    padding: 1.2rem 0.5rem 2.2rem 0.5rem;
-  }
-  .featured-card .image {
-    max-width: 90vw;
-    height: 160px;
-  }
-  .featured-badge {
-    font-size: 0.98rem;
-    padding: 0.4rem 1.1rem;
-    top: -12px;
-  }
-  .card, .shoe-card, .featured-card {
-    width: 95vw !important;
-    min-width: 0 !important;
-    max-width: 340px !important;
-    height: 340px !important;
-    min-height: 340px !important;
-    max-height: 340px !important;
-  }
-}
-
-/* --- Skip Link: Only show when focused, style for accessibility --- */
-.skip-link {
-  position: absolute;
-  left: -999px;
-  top: 0;
-  background: var(--accent-blue);
-  color: #fff;
-  padding: 0.7rem 1.5rem;
-  z-index: 2000;
-  border-radius: 0 0 1.2rem 1.2rem;
-  font-size: 1.1rem;
-  font-weight: 700;
-  text-decoration: none;
-  transition: left 0.2s, box-shadow 0.2s;
-  box-shadow: 0 2px 12px #2563eb22;
-}
-.skip-link:focus {
-  left: 1rem;
-  top: 1rem;
-  outline: 3px solid #fff;
-  box-shadow: 0 4px 24px #2563eb55;
-}
-
-/* --- Hide Shop Now button on desktop --- */
-@media (min-width: 901px) {
-  .desktop-hide { display: none !important; }
-}
-
-img { max-width: 100%; height: auto; display: block; }

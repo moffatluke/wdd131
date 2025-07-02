@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kicks Cart</title>
+  <link rel="stylesheet" href="assets/css/kicks.css">
+</head>
+<body>
+  <header class="navbar" id="navbar">
+    <a href="index.html" class="logo" aria-label="Kicks Home">
+      <img src="RetroBlackVans.png" alt="Kicks Logo" class="logo-img">
+      <span style="font-family: var(--font-logo); font-size:2rem; margin-left:0.5rem;">Kicks</span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="#collection" id="shopNav">Shop</a>
+      <a href="cart.html" aria-current="page">Cart</a>
+    </nav>
+    <div class="cart-icon" id="cartIcon" style="display:none;" aria-label="Shopping cart" tabindex="0">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h7.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      <span class="cart-count" id="cartCount" aria-live="polite">0</span>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navLinks">
+      <span class="menu-bar" aria-hidden="true"></span>
+      <span class="menu-bar" aria-hidden="true"></span>
+      <span class="menu-bar" aria-hidden="true"></span>
+    </button>
+  </header>
+  <main style="margin-top:3.5rem; min-height:60vh;">
+    <section class="cart-section" id="cartSection">
+      <h1 style="text-align:center; font-size:2.2rem; margin-bottom:2rem;">Your Cart</h1>
+      <div id="cartContent" class="cart-content" style="max-width:700px; margin:0 auto;"></div>
+      <div style="text-align:center; margin-top:2.5rem;">
+        <a href="index.html#collection" class="btn btn-primary">Shop Collection</a>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-content">
+      <span>&copy; 2025 Kicks Sneaker Shop. All rights reserved.</span>
+    </div>
+  </footer>
+  <script type="module" src="assets/js/cart.js"></script>
+  <script type="module" src="assets/js/kicks.js"></script>
+</body>
+</html>

@@ -9,15 +9,19 @@
   <link rel="icon" href="assets/imgs/bluewhitecali.png">
   <link href="assets/css/kicks.css" rel="stylesheet">
 </head>
+
+
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
   <header class="navbar" role="banner">
     <div class="logo">
-      <img src="assets/imgs/kickstansparent.png" alt="Kicks Collection logo: stylized blue sneaker silhouette with palm tree" class="logo-img" style="height: 2.2rem; width: auto; vertical-align: middle;" />
+      <a href="index.html" tabindex="0">
+        <img src="assets/imgs/kickstansparent.png" alt="Kicks Collection logo: stylized blue sneaker silhouette with palm tree" class="logo-img" />
+      </a>
     </div>
     <nav class="nav-links" id="navLinks" aria-label="Main navigation">
       <a href="#featured">Featured</a>
-      <a href="#shop">Shop</a>
+      <a href="#main-content" id="shopNavBtn">Shop</a>
       <a href="#about">About</a>
       <a href="siteplan/site-plan.html" class="btn btn-secondary" style="margin-left:1rem;">Site Plan</a>
     </nav>
@@ -26,36 +30,27 @@
       <span class="menu-bar" aria-hidden="true"></span>
       <span class="menu-bar" aria-hidden="true"></span>
     </button>
-    <a href="#shop" class="btn btn-primary desktop-hide">Shop Now</a>
-    <div class="cart-icon" id="cartIcon" style="display:none;" aria-label="Shopping cart" tabindex="0">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h7.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-      <span class="cart-count" id="cartCount" aria-live="polite">0</span>
-    </div>
   </header>
-  <section class="hero" aria-labelledby="hero-title">
-    <div class="hero-overlay" aria-hidden="true"></div>
-    <div class="hero-content hero-centered">
-      <h1 class="hero-title" id="hero-title"><span id="hero-typing"></span></h1>
+  <section class="hero" aria-labelledby="hero-title" style="background: url('assets/imgs/herovid.gif') center center/cover no-repeat; position: relative;">
+    <div class="hero-overlay" aria-hidden="true" style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(24,28,36,0.45);"></div>
+    <div class="hero-content hero-centered" style="position:relative;z-index:1;">
+      <h1 class="hero-title" id="hero-title">STEP BOLD. LIVE COSTAL.<span id="hero-typing"></span></h1>
       <p class="hero-subtext">Discover the latest drop of California-inspired sneakers, crafted for comfort and designed for bold self-expression. Step into the new wave of modern kicks.</p>
       <a href="#shop" class="btn btn-secondary">Browse Collection</a>
     </div>
   </section>
   <main id="main-content">
-    <section class="intro-section">
+    <section class="intro-section" id="shop" style="text-align:center; max-width:700px; margin:2rem auto; scroll-margin-top: 100px;">
       <h2>Welcome to the Kicks Collection</h2>
       <p>Discover the latest and greatest in premium sneakers. Explore our featured shoes below and find your perfect pair for every occasion. Click on a product card to learn more or to buy now.</p>
     </section>
-    <section class="card-grid" id="shop" aria-label="Shop all sneakers">
+    <section class="card-grid" aria-label="Shop all sneakers">
       <!-- Product cards will be rendered here by kicks.js -->
     </section>
     <section class="about-section" id="about">
       <h2>About This Project</h2>
-      <p>This landing page is inspired by modern sneaker shops and showcases premium product cards. Use the menu above to explore featured shoes, shop the collection, or learn more about us.</p>
-      <p><a href="#shop" class="merch-link">Shop All Sneakers &rarr;</a></p>
-      <div style="margin:2rem auto; max-width:400px;">
-        <img src="assets/imgs/wireframe-child.png" alt="Child Page Wireframe" style="width:100%; border-radius: 12px; box-shadow: 0 4px 24px #2563eb22;">
-        <p style="text-align:center; color:var(--text-light); margin-top:0.5rem;">Product Detail Page Wireframe</p>
-      </div>
+      <p>This landing page is inspired by modern sneaker shops and showcases premium product cards. Use the menu above to explore featured shoes, shop the collection, or learn more about KICKS.</p>
+      <div style="margin:2rem auto; max-width:400px;"></div>
     </section>
   </main>
   <footer class="footer" role="contentinfo">
@@ -63,6 +58,7 @@
       <span>&copy; 2025 Kicks TM</span>
     </div>
   </footer>
-  <script src="assets/js/kicks.js"></script>
+  <script type="module" src="assets/js/kicks.js"></script>
+
 </body>
 </html>
