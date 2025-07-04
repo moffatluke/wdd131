@@ -246,7 +246,16 @@ html {
   flex-direction: column;
   gap: 1.2rem;
 }
-.shoe-info h1 { font-size: 2.2rem; font-weight: 800; color: #222e3a; }
+.shoe-info h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #222e3a;
+}
+@media (max-width: 900px) {
+  .shoe-info h1 {
+    font-size: 1.5rem;
+  }
+}
 .shoe-price { font-size: 1.4rem; color: var(--accent-blue); font-weight: 700; }
 .shoe-info label { font-weight: 600; color: #222e3a; }
 .shoe-info select { font-size: 1.1rem; padding: 0.5rem 1.2rem; border-radius: 1.2rem; border: 1.5px solid var(--accent-blue); background: #f7fafd; color: #222e3a; font-weight: 600; }
