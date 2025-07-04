@@ -346,7 +346,9 @@ html {
 }
 
 /* --- SECTION HEADINGS --- */
-section h2 {
+section h2,
+.reviews-section h2,
+.other-products-section h2 {
   text-align: center;
   font-size: 2.2rem;
   font-weight: 900;
@@ -448,4 +450,64 @@ section h2 {
   max-width: 700px;
   margin: 2rem auto;
   scroll-margin-top: 100px;
+}
+
+#shoe-detail {
+  min-height: 400px;
+}
+#review-list {
+  min-height: 180px;
+}
+#other-products-grid {
+  min-height: 220px;
+}
+
+/* --- SKELETON LOADER --- */
+.product-detail-skeleton {
+  animation: skeleton-fade 1.2s infinite alternate;
+}
+.skeleton-img {
+  width: 340px;
+  height: 340px;
+  background: #e0e7ef;
+  border-radius: 1.5rem;
+  margin-bottom: 1.2rem;
+}
+.skeleton-title {
+  width: 60%;
+  height: 2.2rem;
+  background: #e0e7ef;
+  border-radius: 0.7rem;
+  margin-bottom: 1.2rem;
+}
+.skeleton-price {
+  width: 30%;
+  height: 1.4rem;
+  background: #e0e7ef;
+  border-radius: 0.7rem;
+  margin-bottom: 1.2rem;
+}
+.skeleton-desc {
+  width: 90%;
+  height: 3.5rem;
+  background: #e0e7ef;
+  border-radius: 1rem;
+  margin-bottom: 1.2rem;
+}
+.skeleton-select {
+  width: 40%;
+  height: 2.2rem;
+  background: #e0e7ef;
+  border-radius: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+.skeleton-btn {
+  width: 50%;
+  height: 2.2rem;
+  background: #e0e7ef;
+  border-radius: 2rem;
+}
+@keyframes skeleton-fade {
+  0% { opacity: 0.7; }
+  100% { opacity: 1; }
 }
