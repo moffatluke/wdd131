@@ -23,7 +23,7 @@
       <a href="#featured">Featured</a>
       <a href="#main-content" id="shopNavBtn">Shop</a>
       <a href="#about">About</a>
-      <a href="siteplan/site-plan.html" class="btn btn-secondary" style="margin-left:1rem;">Site Plan</a>
+      <a href="siteplan/site-plan.html">Site Plan</a>
     </nav>
     <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navLinks">
       <span class="menu-bar" aria-hidden="true"></span>
@@ -31,16 +31,20 @@
       <span class="menu-bar" aria-hidden="true"></span>
     </button>
   </header>
-  <section class="hero" aria-labelledby="hero-title" style="background: url('assets/imgs/herovid.gif') center center/cover no-repeat; position: relative;">
-    <div class="hero-overlay" aria-hidden="true" style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(24,28,36,0.45);"></div>
-    <div class="hero-content hero-centered" style="position:relative;z-index:1;">
+  <section class="hero" aria-labelledby="hero-title">
+    <picture class="hero-bg-picture">
+      <source srcset="assets/imgs/compressed/calibeachhero_optimized.webp" type="image/webp">
+      <img src="assets/imgs/calibeachhero.png" alt="Stylized California beach illustration with palm trees and sneakers" class="hero-bg" loading="eager" width="1920" height="600">
+    </picture>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-content hero-centered">
       <h1 class="hero-title" id="hero-title">STEP BOLD. LIVE COSTAL.<span id="hero-typing"></span></h1>
       <p class="hero-subtext">Discover the latest drop of California-inspired sneakers, crafted for comfort and designed for bold self-expression. Step into the new wave of modern kicks.</p>
       <a href="#shop" class="btn btn-secondary">Browse Collection</a>
     </div>
   </section>
-  <main id="main-content">
-    <section class="intro-section" id="shop" style="text-align:center; max-width:700px; margin:2rem auto; scroll-margin-top: 100px;">
+  <main id="main-content" role="main">
+    <section class="intro-section" id="shop">
       <h2>Welcome to the Kicks Collection</h2>
       <p>Discover the latest and greatest in premium sneakers. Explore our featured shoes below and find your perfect pair for every occasion. Click on a product card to learn more or to buy now.</p>
     </section>
@@ -59,6 +63,5 @@
     </div>
   </footer>
   <script type="module" src="assets/js/kicks.js"></script>
-
 </body>
 </html>

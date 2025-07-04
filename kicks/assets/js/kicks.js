@@ -1,27 +1,37 @@
 // Modern Kicks Main JS (merged landing + detail logic)
-import { products } from './products.js';
+import { products, reviews } from './products.js';
 
-// This file contains the main JavaScript logic for the Modern Kicks website.
-
-// --- Landing Page: Render product cards simply ---
-function renderShoeCards() {
+function renderProductCards() {
   const grid = document.querySelector('.card-grid');
   if (!grid) return;
   grid.innerHTML = '';
-  for (let i = 0; i < products.length; i++) {
-    const shoe = products[i];
-    grid.innerHTML += `
-      <a href="shoe.html?shoe=${i}" class="card shoe-card card-link">
-        <img src="${shoe.images[0]}" alt="${shoe.name}" class="image" loading="lazy" />
-        <div class="banner">${shoe.name}</div>
-      </a>
-    `;
-  }
+  products.forEach((shoe, i) => {
+    const card = document.createElement('a');
+    card.href = `shoe.html?shoe=${i}`;
+    card.className = 'card shoe-card card-link';
+    card.id = `product-card-${i}`;
+
+    const img = document.createElement('img');
+    // Use smallImage if available, otherwise fallback to main image
+    img.src = shoe.smallImage ? shoe.smallImage : shoe.images[0];
+    img.alt = shoe.name;
+    img.className = 'image';
+    img.loading = 'lazy';
+    img.width = 180;
+    img.height = 130;
+
+    const banner = document.createElement('div');
+    banner.className = 'banner';
+    banner.textContent = shoe.name;
+
+    card.appendChild(img);
+    card.appendChild(banner);
+    grid.appendChild(card);
+  });
 }
 
-// --- Detail Page: Render product detail ---
 function renderProductDetail() {
-  const detail = document.getElementById('product-detail') || document.getElementById('shoe-detail');
+  const detail = document.getElementById('shoe-detail');
   if (!detail) return;
   const params = new URLSearchParams(window.location.search);
   const idx = parseInt(params.get('shoe'), 10);
@@ -31,11 +41,11 @@ function renderProductDetail() {
     return;
   }
   detail.innerHTML = `
-    <div class="product-detail-card shoe-main">
+    <div class="product-detail-card">
       <div class="shoe-images">
-        <img src="${shoe.images[0]}" alt="${shoe.name}" class="main-img product-detail-img" loading="lazy" />
+        <img src="${shoe.images[0]}" alt="${shoe.name}" class="main-img product-detail-img" loading="lazy" width="340" height="340" />
       </div>
-      <div class="shoe-info product-detail-info">
+      <div class="shoe-info">
         <h1>${shoe.name}</h1>
         <div class="shoe-price">$${shoe.price.toFixed(2)}</div>
         <p>${shoe.description}</p>
@@ -48,13 +58,37 @@ function renderProductDetail() {
           <option>11</option>
         </select>
         <button class="btn btn-primary" id="addToCartBtn">Add to Cart</button>
-        <a href="index.html#shop" class="btn btn-secondary">Back to Shop</a>
       </div>
     </div>
   `;
 }
 
+function renderReviews() {
+  const reviewList = document.getElementById('review-list');
+  if (!reviewList || !reviews || reviews.length === 0) return;
+  // Shuffle and pick 5
+  const shuffled = [...reviews].sort(() => 0.5 - Math.random());
+  const selected = shuffled.slice(0, 5);
+  reviewList.innerHTML = selected.map(r => `
+    <div class="review-card">
+      <div class="review-header">
+        <span class="review-stars">${r.stars}</span>
+        <span class="review-client">${r.clientName}</span>
+        <span class="review-date">${r.date}</span>
+      </div>
+      <div class="review-body">${r.statement}</div>
+    </div>
+  `).join('');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-  renderShoeCards();
-  renderProductDetail();
+  if (document.getElementById('shoe-detail')) {
+    renderProductDetail();
+  }
+  if (document.getElementById('review-list')) {
+    renderReviews();
+  }
+  if (document.querySelector('.card-grid')) {
+    renderProductCards();
+  }
 });
