@@ -43,7 +43,7 @@ function renderProductDetail() {
   detail.innerHTML = `
     <div class="product-detail-card">
       <div class="shoe-images">
-        <img src="${shoe.images[0]}" alt="${shoe.name}" class="main-img product-detail-img" loading="lazy" width="340" height="340" />
+        <img src="${shoe.smallImage ? shoe.smallImage : shoe.images[0]}" alt="${shoe.name}" class="main-img product-detail-img" loading="lazy" width="340" height="340" />
       </div>
       <div class="shoe-info">
         <h1>${shoe.name}</h1>

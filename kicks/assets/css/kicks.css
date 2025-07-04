@@ -223,6 +223,7 @@ html {
   border-radius: 2rem;
   box-shadow: 0 4px 32px #2563eb11;
   padding: 2.5rem 2rem;
+  min-height: 400px;
 }
 .shoe-images {
   display: flex;
@@ -292,6 +293,11 @@ html {
   flex-direction: column;
   align-items: center;
 }
+.about-divider {
+  margin: 2rem auto;
+  max-width: 400px;
+  height: 0;
+}
 
 /* --- REVIEW CARDS --- */
 .review-card {
@@ -346,6 +352,7 @@ section h2 {
   gap: 1.5rem;
   justify-content: center;
   align-items: stretch;
+  min-height: 120px;
 }
 .review-card {
   background: #23272f;
