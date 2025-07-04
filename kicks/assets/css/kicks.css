@@ -98,6 +98,16 @@ body::-webkit-scrollbar {
   align-items: center;
   justify-content: center;
 }
+.hero-content.hero-centered h1.hero-title {
+  font-size: 5.5rem;
+}
+@media (max-width: 900px) {
+  .hero-content.hero-centered h1.hero-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+  }
+}
 .hero-title {
   font-size: 5.5rem;
   font-weight: 1000;
